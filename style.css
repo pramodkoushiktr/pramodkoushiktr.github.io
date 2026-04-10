@@ -65,7 +65,7 @@ header{
 /* RESPONSIVE LOGO */
 .logo img{
   display:block;
-  width:clamp(120px, 18vw, 220px);
+  width:clamp(520px, 18vw, 1220px);
   height:auto;
   object-fit:contain;
 }
