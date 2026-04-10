@@ -65,7 +65,7 @@ header{
 /* LOGO IMAGE */
 .logo img{
   display:block;
-  max-width:400px;  /* increased size */
+  max-width:900px;  /* increased size */
   height:auto;
   object-fit:contain;
 }
