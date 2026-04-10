@@ -197,42 +197,53 @@ body.light .switch-thumb{
 
 /* MOBILE */
 
+/* ================= STRONG MOBILE FIX ================= */
+
 @media (max-width:600px){
 
-  body{
-    font-size:16px; /* base readable size */
+  html{
+    font-size:18px; /* 👈 increases EVERYTHING globally */
   }
 
-  /* LOGO TEXT */
+  body{
+    font-size:1rem;
+  }
+
+  /* LOGO */
+  .logo img{
+    width:260px;
+  }
+
   .logo h1{
-    font-size:32px;
-    letter-spacing:2px;
+    font-size:2rem;
   }
 
   /* MENU */
+  nav{
+    gap:18px;
+  }
+
   nav a{
-    font-size:16px;
-    padding:8px 10px;
+    font-size:1rem;
+    padding:10px 12px;
   }
 
-  /* CARD TITLES */
+  /* CARDS */
   .card h3{
-    font-size:18px;
+    font-size:1.1rem;
   }
 
-  /* GENERAL TEXT */
   p{
-    font-size:15px;
-    line-height:1.6;
+    font-size:1rem;
+    line-height:1.7;
   }
 
-  /* CONTAINER SPACING */
+  /* CONTAINER */
   .container{
-    padding:20px;
-    gap:20px;
+    padding:18px;
+    gap:18px;
   }
 }
-
 /* DESKTOP SMART LAYOUT */
 @media (min-width:1000px){
 
