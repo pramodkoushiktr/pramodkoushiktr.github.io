@@ -9,18 +9,15 @@
   --gold-glow:#ffe7a3;
 
   --text:#f5f5f5;
-
-  /* HEADER ALWAYS DARK */
-  --header-bg:#050505;
 }
 
-/* LIGHT MODE (WARM + RICH, NOT FADED) */
+/* LIGHT MODE */
 body.light{
-  --bg:#f4efe6;          /* warm ivory */
+  --bg:#f4efe6;
   --card:#ffffff;
 
   --gold-dark:#8a6a2f;
-  --gold-main:#b8962e;   /* richer gold (not yellow) */
+  --gold-main:#b8962e;
   --gold-light:#e6c76a;
   --gold-glow:#fff0b3;
 
@@ -36,31 +33,34 @@ body{
   transition:0.4s ease;
 }
 
-/* HEADER (ALWAYS DARK) */
+/* HEADER ALWAYS DARK */
 header{
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:20px 40px;
-  background:var(--header-bg);
+
+  background:#050505 !important;
+  color:#f5d37a;
+
   position:sticky;
   top:0;
   z-index:1000;
-  box-shadow:0 5px 20px rgba(0,0,0,0.6);
+
+  box-shadow:0 5px 20px rgba(0,0,0,0.7);
 }
 
 /* NAV LINKS */
 nav a{
   margin:0 12px;
   text-decoration:none;
-  color:var(--gold-light);
+  color:#f5d37a !important;
   font-weight:600;
   position:relative;
-  transition:0.3s;
 }
 
 nav a:hover{
-  color:var(--gold-glow);
+  color:#ffe7a3 !important;
 }
 
 /* underline animation */
@@ -71,7 +71,7 @@ nav a::after{
   bottom:-5px;
   width:0;
   height:2px;
-  background:linear-gradient(90deg,var(--gold-dark),var(--gold-light));
+  background:linear-gradient(90deg,#7a5a21,#f5d37a);
   transition:0.3s;
 }
 
@@ -79,7 +79,7 @@ nav a:hover::after{
   width:100%;
 }
 
-/* SWITCH */
+/* THEME SWITCH */
 .theme-switch{
   cursor:pointer;
 }
@@ -87,7 +87,7 @@ nav a:hover::after{
 .switch-track{
   width:60px;
   height:30px;
-  background:linear-gradient(145deg,var(--gold-dark),var(--gold-main));
+  background:linear-gradient(145deg,#7a5a21,#caa54b);
   border-radius:30px;
   display:flex;
   align-items:center;
@@ -95,22 +95,29 @@ nav a:hover::after{
   transition:0.4s;
 }
 
+/* FIXED CONTRAST THUMB */
 .switch-thumb{
   width:22px;
   height:22px;
-  background:var(--gold-light);
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:12px;
+  font-size:13px;
+  font-weight:bold;
   transition:0.4s;
+
+  background:#1a1a1a;
+  color:#ffd700;
+  box-shadow:0 0 8px rgba(255,215,0,0.4);
 }
 
-/* LIGHT MODE POSITION */
+/* LIGHT MODE SWITCH */
 body.light .switch-thumb{
   transform:translateX(30px);
-  background:var(--gold-glow);
+  background:#ffffff;
+  color:#b8962e;
+  box-shadow:0 0 8px rgba(184,150,46,0.5);
 }
 
 /* GRID */
@@ -134,7 +141,7 @@ body.light .switch-thumb{
   transition:0.4s;
 }
 
-/* HOVER */
+/* CARD HOVER */
 .card:hover{
   transform:translateY(-8px);
   box-shadow:
