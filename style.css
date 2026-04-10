@@ -1,5 +1,6 @@
+/* ================= ROOT COLORS ================= */
+
 :root{
-  /* DARK MODE */
   --bg:#0b0b0b;
   --card:#121212;
 
@@ -24,7 +25,8 @@ body.light{
   --text:#1a1a1a;
 }
 
-/* BODY */
+/* ================= BODY ================= */
+
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
@@ -35,15 +37,14 @@ body{
 
 /* ================= HEADER ================= */
 
-/* HEADER ALWAYS DARK */
 header{
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
 
-  gap:clamp(8px,2vw,18px);
-  padding:clamp(10px,2vw,20px);
+  gap:15px;
+  padding:15px 20px;
 
   background:#050505 !important;
   position:sticky;
@@ -53,33 +54,28 @@ header{
   box-shadow:0 5px 20px rgba(0,0,0,0.7);
 }
 
-/* LOGO CONTAINER */
+/* LOGO */
 .logo{
-  width:100%;
   display:flex;
   justify-content:center;
   align-items:center;
-  margin-bottom:clamp(10px,2vw,20px);
 }
 
-/* RESPONSIVE LOGO */
 .logo img{
-  display:block;
-  width:clamp(520px, 18vw, 1220px);
+  width:clamp(180px, 30vw, 400px);
   height:auto;
   object-fit:contain;
 }
 
-/* NAV CENTER */
+/* MENU */
 nav{
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
+  gap:20px;
 }
 
-/* MENU ITEMS */
 nav a{
-  margin:0 14px;
   text-decoration:none;
   color:#f5d37a !important;
   font-weight:600;
@@ -89,13 +85,11 @@ nav a{
 /* HOVER */
 nav a:hover{
   color:#ffe7a3 !important;
-  text-shadow:0 0 6px rgba(255,215,120,0.4);
 }
 
 /* ACTIVE PAGE */
 nav a.active{
   color:#ffffff !important;
-  text-shadow:0 0 8px rgba(255,255,255,0.6);
 }
 
 /* ================= TOGGLE ================= */
@@ -126,12 +120,10 @@ nav a.active{
   align-items:center;
   justify-content:center;
   font-size:13px;
-  font-weight:bold;
   transition:0.4s;
 
   background:#1a1a1a;
   color:#ffd700;
-  box-shadow:0 0 8px rgba(255,215,0,0.4);
 }
 
 /* LIGHT MODE SWITCH */
@@ -139,7 +131,6 @@ body.light .switch-thumb{
   transform:translateX(30px);
   background:#ffffff;
   color:#b8962e;
-  box-shadow:0 0 8px rgba(184,150,46,0.5);
 }
 
 /* ================= CONTENT ================= */
@@ -169,8 +160,7 @@ body.light .switch-thumb{
 .card:hover{
   transform:translateY(-8px);
   box-shadow:
-    0 0 15px rgba(202,165,75,0.35),
-    0 0 30px rgba(245,211,122,0.15);
+    0 0 15px rgba(202,165,75,0.3);
 }
 
 /* IMAGE */
@@ -198,12 +188,16 @@ body.light .switch-thumb{
 
 /* MOBILE */
 @media (max-width:600px){
+
   .logo img{
-    width:140px;
+    width:180px;
+  }
+
+  nav{
+    gap:12px;
   }
 
   nav a{
-    margin:8px 10px;
     font-size:14px;
   }
 
@@ -213,16 +207,30 @@ body.light .switch-thumb{
   }
 }
 
-/* TABLET */
-@media (min-width:601px) and (max-width:1024px){
-  .logo img{
-    width:170px;
-  }
-}
+/* DESKTOP SMART LAYOUT */
+@media (min-width:1000px){
 
-/* LARGE SCREENS */
-@media (min-width:1400px){
-  .logo img{
-    width:220px;
+  header{
+    flex-direction:row;
+    align-items:center;
+  }
+
+  /* LOGO LEFT */
+  .logo{
+    flex:0 0 auto;
+    justify-content:flex-start;
+  }
+
+  /* MENU CENTER */
+  nav{
+    flex:1;
+    display:flex;
+    justify-content:center;
+  }
+
+  /* TOGGLE RIGHT */
+  .theme-switch{
+    position:static;
+    margin-left:auto;
   }
 }
