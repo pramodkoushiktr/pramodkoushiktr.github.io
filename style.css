@@ -196,23 +196,40 @@ body.light .switch-thumb{
 /* ================= RESPONSIVE ================= */
 
 /* MOBILE */
+
 @media (max-width:600px){
 
-  .logo img{
-    width:220px;
+  body{
+    font-size:16px; /* base readable size */
   }
 
-  nav{
-    gap:15px;
+  /* LOGO TEXT */
+  .logo h1{
+    font-size:32px;
+    letter-spacing:2px;
   }
 
+  /* MENU */
   nav a{
-    font-size:14px;
+    font-size:16px;
+    padding:8px 10px;
   }
 
-  .theme-switch{
-    right:10px;
-    top:10px;
+  /* CARD TITLES */
+  .card h3{
+    font-size:18px;
+  }
+
+  /* GENERAL TEXT */
+  p{
+    font-size:15px;
+    line-height:1.6;
+  }
+
+  /* CONTAINER SPACING */
+  .container{
+    padding:20px;
+    gap:20px;
   }
 }
 
