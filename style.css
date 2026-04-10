@@ -65,7 +65,7 @@ header{
 }
 
 .logo img{
-  width:min(60vw, 500px); /* BIGGER LOGO */
+  width:min(80vw, 650px); /* BIGGER LOGO */
   height:auto;
   object-fit:contain;
 }
