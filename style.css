@@ -169,3 +169,14 @@ body.light .switch-thumb{
     opacity:1;
   }
 }
+
+/* ACTIVE MENU (CURRENT PAGE) */
+nav a.active{
+  color:#ffffff !important;   /* pure white */
+}
+
+/* Optional: stronger underline for active */
+nav a.active::after{
+  width:100%;
+  background:#ffffff;
+}
