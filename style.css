@@ -35,14 +35,17 @@ body{
 
 /* HEADER ALWAYS DARK */
 header{
+/* HEADER LAYOUT */
+header{
   display:flex;
-  justify-content:space-between;
+  flex-direction:column;
   align-items:center;
-  padding:20px 40px;
+  justify-content:center;
+  gap:15px;
+
+  padding:20px 20px;
 
   background:#050505 !important;
-  color:#f5d37a;
-
   position:sticky;
   top:0;
   z-index:1000;
@@ -50,22 +53,45 @@ header{
   box-shadow:0 5px 20px rgba(0,0,0,0.7);
 }
 
-/* NAV LINKS */
+/* LOGO IMAGE */
+.logo img{
+  height:70px;
+  object-fit:contain;
+}
+
+/* CENTER MENU */
+nav{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* MENU ITEMS */
 nav a{
-  margin:0 12px;
+  margin:0 14px;
   text-decoration:none;
   color:#f5d37a !important;
   font-weight:600;
-  position:relative;
+  transition:0.3s;
 }
 
+/* HOVER */
 nav a:hover{
   color:#ffe7a3 !important;
+  text-shadow:0 0 6px rgba(255,215,120,0.4);
 }
 
-/* THEME SWITCH */
+/* ACTIVE */
+nav a.active{
+  color:#ffffff !important;
+  text-shadow:0 0 8px rgba(255,255,255,0.6);
+}
+
+/* TOGGLE POSITION */
 .theme-switch{
-  cursor:pointer;
+  position:absolute;
+  right:25px;
+  top:25px;
 }
 
 .switch-track{
