@@ -33,17 +33,17 @@ body{
   transition:0.4s ease;
 }
 
+/* ================= HEADER ================= */
+
 /* HEADER ALWAYS DARK */
-header{
-/* HEADER LAYOUT */
 header{
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:15px;
+  gap:10px;
 
-  padding:20px 20px;
+  padding:15px 20px;
 
   background:#050505 !important;
   position:sticky;
@@ -53,13 +53,25 @@ header{
   box-shadow:0 5px 20px rgba(0,0,0,0.7);
 }
 
-/* LOGO IMAGE */
-.logo img{
-  height:70px;
-  object-fit:contain;
+/* LOGO CONTAINER */
+.logo{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-/* CENTER MENU */
+/* LOGO IMAGE */
+.logo img{
+  display:block;
+  max-width:120px;
+  height:auto;
+  object-fit:contain;
+
+  filter:drop-shadow(0 0 10px rgba(255,215,120,0.6));
+}
+
+/* NAV CENTER */
 nav{
   display:flex;
   justify-content:center;
@@ -81,17 +93,19 @@ nav a:hover{
   text-shadow:0 0 6px rgba(255,215,120,0.4);
 }
 
-/* ACTIVE */
+/* ACTIVE PAGE */
 nav a.active{
   color:#ffffff !important;
   text-shadow:0 0 8px rgba(255,255,255,0.6);
 }
 
-/* TOGGLE POSITION */
+/* ================= TOGGLE ================= */
+
 .theme-switch{
   position:absolute;
-  right:25px;
-  top:25px;
+  right:20px;
+  top:20px;
+  cursor:pointer;
 }
 
 .switch-track{
@@ -105,7 +119,7 @@ nav a.active{
   transition:0.4s;
 }
 
-/* FIXED CONTRAST THUMB */
+/* THUMB WITH CONTRAST */
 .switch-thumb{
   width:22px;
   height:22px;
@@ -130,7 +144,8 @@ body.light .switch-thumb{
   box-shadow:0 0 8px rgba(184,150,46,0.5);
 }
 
-/* GRID */
+/* ================= CONTENT ================= */
+
 .container{
   padding:40px;
   display:grid;
@@ -145,6 +160,7 @@ body.light .switch-thumb{
   overflow:hidden;
   border:1px solid rgba(200,160,60,0.2);
   box-shadow:0 10px 30px rgba(0,0,0,0.4);
+
   transform:translateY(40px);
   opacity:0;
   animation:fadeUp 0.8s forwards;
@@ -178,20 +194,4 @@ body.light .switch-thumb{
     transform:translateY(0);
     opacity:1;
   }
-}
-
-/* ACTIVE MENU (CURRENT PAGE) */
-nav a.active{
-  color:#ffffff !important;   /* pure white */
-}
-
-/* Optional: stronger underline for active */
-nav a.active::after{
-  width:100%;
-  background:#ffffff;
-}
-
-nav a.active{
-  color:#ffffff !important;
-  text-shadow:0 0 8px rgba(255,255,255,0.6);
 }
