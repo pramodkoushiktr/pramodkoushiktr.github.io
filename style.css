@@ -1,0 +1,163 @@
+<!-- =========================
+GLOBAL STYLE (style.css)
+========================= --><style>
+:root{
+  --bg:#0b0b0b;
+  --card:#111;
+  --gold1:#f5d37a;
+  --gold2:#caa54b;
+  --text:#f5f5f5;
+}
+
+body.light{
+  --bg:#f5f5f5;
+  --card:#fff;
+  --text:#111;
+}
+
+body{
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:0.4s;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+  background:transparent;
+}
+
+nav a{
+  margin:0 15px;
+  text-decoration:none;
+  color:var(--gold1);
+  font-weight:600;
+  position:relative;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0;
+  height:2px;
+  background:var(--gold2);
+  transition:0.3s;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+.toggle{
+  cursor:pointer;
+  padding:8px 16px;
+  border:1px solid var(--gold2);
+  border-radius:20px;
+  color:var(--gold1);
+}
+
+.container{
+  padding:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+  transform:translateY(30px);
+  opacity:0;
+  animation:fadeUp 1s forwards;
+}
+
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.card h3{
+  padding:15px;
+  color:var(--gold1);
+}
+
+@keyframes fadeUp{
+  to{
+    transform:translateY(0);
+    opacity:1;
+  }
+}
+</style><!-- =========================
+SCRIPT (script.js)
+========================= --><script>
+function toggleTheme(){
+  const current = localStorage.getItem('theme');
+  if(current==='light'){
+    document.body.classList.remove('light');
+    localStorage.setItem('theme','dark');
+  } else{
+    document.body.classList.add('light');
+    localStorage.setItem('theme','light');
+  }
+}
+
+window.onload = ()=>{
+  const saved = localStorage.getItem('theme');
+  if(saved==='light') document.body.classList.add('light');
+}
+</script><!-- =========================
+HEADER (reuse in all pages)
+========================= --><header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="books.html">Books</a>
+    <a href="tech.html">Tech</a>
+    <a href="dheenava.html">Dheenava</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="toggle" onclick="toggleTheme()">Toggle</div>
+</header><!-- =========================
+HOME PAGE (index.html)
+========================= --><div class="container">
+  <div class="card"><img src="https://picsum.photos/400/300?1"><h3>Welcome Post</h3></div>
+  <div class="card"><img src="https://picsum.photos/400/300?2"><h3>Latest Ideas</h3></div>
+</div><!-- =========================
+BLOG PAGE (blog.html)
+========================= --><div class="container">
+  <div class="card"><img src="https://picsum.photos/400/300?3"><h3>Blog 1</h3></div>
+  <div class="card"><img src="https://picsum.photos/400/300?4"><h3>Blog 2</h3></div>
+</div><!-- =========================
+BOOKS PAGE (books.html)
+========================= --><div class="container">
+  <div class="card"><img src="https://picsum.photos/400/300?5"><h3>Book 1</h3></div>
+  <div class="card"><img src="https://picsum.photos/400/300?6"><h3>Book 2</h3></div>
+</div><!-- =========================
+TECH PAGE (tech.html)
+========================= --><div class="container">
+  <div class="card"><img src="https://picsum.photos/400/300?7"><h3>Tech 1</h3></div>
+  <div class="card"><img src="https://picsum.photos/400/300?8"><h3>Tech 2</h3></div>
+</div><!-- =========================
+DHEENAVA PAGE (dheenava.html)
+========================= --><div class="container">
+  <div class="card"><img src="https://picsum.photos/400/300?9"><h3>Dheenava 1</h3></div>
+  <div class="card"><img src="https://picsum.photos/400/300?10"><h3>Dheenava 2</h3></div>
+</div><!-- =========================
+ABOUT PAGE (about.html)
+========================= --><div class="container">
+  <div class="card"><img src="https://picsum.photos/400/300?11"><h3>About Me</h3></div>
+</div><!-- =========================
+CONTACT PAGE (contact.html)
+========================= --><div class="container">
+  <div class="card"><img src="https://picsum.photos/400/300?12"><h3>Contact Info</h3></div>
+</div>
