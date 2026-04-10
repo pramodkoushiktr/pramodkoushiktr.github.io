@@ -220,36 +220,42 @@ body.light .switch-thumb{
 @media (max-width:600px){
 
   html{
-    font-size:20px; /* 👈 STRONG increase */
+    font-size:22px; /* 👈 BIG and clearly readable */
+  }
+
+  body{
+    font-size:1rem;
   }
 
   /* LOGO */
   .logo img{
-    width:280px;
+    width:85vw;
   }
 
   /* MENU */
   nav{
-    gap:14px;
+    gap:12px;
   }
 
   nav a{
     font-size:1rem;
-    padding:10px;
+    padding:12px;
   }
 
-  /* STACK CARDS */
+  /* STACK LAYOUT */
   .container{
-    grid-template-columns:1fr; /* 👈 important */
-    padding:15px;
+    grid-template-columns:1fr;
+    padding:12px;
   }
 
+  /* TEXT */
   .card h3{
     font-size:1.2rem;
   }
 
   p{
     font-size:1rem;
+    line-height:1.7;
   }
 }
 /* DESKTOP SMART LAYOUT */
