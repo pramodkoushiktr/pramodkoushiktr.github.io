@@ -195,53 +195,61 @@ body.light .switch-thumb{
 
 /* ================= RESPONSIVE ================= */
 
-/* MOBILE */
-
-/* ================= STRONG MOBILE FIX ================= */
-
-@media (max-width:600px){
+/* ================= TABLET ================= */
+@media (max-width:900px){
 
   html{
-    font-size:18px; /* 👈 increases EVERYTHING globally */
+    font-size:17px;
   }
 
-  body{
-    font-size:1rem;
-  }
-
-  /* LOGO */
   .logo img{
-    width:260px;
+    width:300px;
   }
 
-  .logo h1{
-    font-size:2rem;
-  }
-
-  /* MENU */
   nav{
-    gap:18px;
+    gap:20px;
   }
 
   nav a{
     font-size:1rem;
-    padding:10px 12px;
+  }
+}
+
+
+/* ================= MOBILE ================= */
+@media (max-width:600px){
+
+  html{
+    font-size:20px; /* 👈 STRONG increase */
   }
 
-  /* CARDS */
+  /* LOGO */
+  .logo img{
+    width:280px;
+  }
+
+  /* MENU */
+  nav{
+    gap:14px;
+  }
+
+  nav a{
+    font-size:1rem;
+    padding:10px;
+  }
+
+  /* STACK CARDS */
+  .container{
+    grid-template-columns:1fr; /* 👈 important */
+    padding:15px;
+  }
+
   .card h3{
-    font-size:1.1rem;
+    font-size:1.2rem;
   }
 
   p{
     font-size:1rem;
-    line-height:1.7;
-  }
-
-  /* CONTAINER */
-  .container{
-    padding:18px;
-    gap:18px;
   }
 }
 /* DESKTOP SMART LAYOUT */
