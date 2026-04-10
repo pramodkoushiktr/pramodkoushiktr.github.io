@@ -1,25 +1,38 @@
 :root{
+  /* DARK THEME */
   --bg:#0b0b0b;
-  --card:#111;
-  --gold1:#f5d37a;
-  --gold2:#caa54b;
+  --card:#121212;
+
+  --gold-dark:#8c6a2d;
+  --gold-main:#caa54b;
+  --gold-light:#f5d37a;
+  --gold-glow:#ffe7a3;
+
   --text:#f5f5f5;
 }
 
+/* LIGHT THEME */
 body.light{
-  --bg:#f5f5f5;
-  --card:#fff;
+  --bg:#f8f6f1;
+  --card:#ffffff;
+
+  --gold-dark:#a67c2d;
+  --gold-main:#d4af37;
+  --gold-light:#f7dc8c;
+  --gold-glow:#fff2c2;
+
   --text:#111;
 }
 
 body{
   margin:0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family:'Segoe UI',sans-serif;
   background:var(--bg);
   color:var(--text);
   transition:0.4s ease;
 }
 
+/* HEADER */
 header{
   display:flex;
   justify-content:space-between;
@@ -27,14 +40,21 @@ header{
   padding:20px 40px;
 }
 
+/* NAV */
 nav a{
   margin:0 12px;
   text-decoration:none;
-  color:var(--gold1);
+  color:var(--gold-light);
   font-weight:600;
   position:relative;
+  transition:0.3s;
 }
 
+nav a:hover{
+  color:var(--gold-glow);
+}
+
+/* underline animation */
 nav a::after{
   content:"";
   position:absolute;
@@ -42,7 +62,7 @@ nav a::after{
   bottom:-5px;
   width:0;
   height:2px;
-  background:var(--gold2);
+  background:linear-gradient(90deg,var(--gold-dark),var(--gold-light));
   transition:0.3s;
 }
 
@@ -50,14 +70,24 @@ nav a:hover::after{
   width:100%;
 }
 
+/* TOGGLE BUTTON */
 .toggle{
   cursor:pointer;
-  padding:6px 14px;
-  border:1px solid var(--gold2);
+  padding:6px 16px;
   border-radius:20px;
-  color:var(--gold1);
+  border:1px solid var(--gold-main);
+  color:var(--gold-light);
+  background:transparent;
+  transition:0.3s;
 }
 
+.toggle:hover{
+  background:var(--gold-main);
+  color:black;
+  box-shadow:0 0 10px var(--gold-glow);
+}
+
+/* GRID */
 .container{
   padding:40px;
   display:grid;
@@ -65,27 +95,42 @@ nav a:hover::after{
   gap:30px;
 }
 
+/* CARD */
 .card{
   background:var(--card);
   border-radius:20px;
   overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  box-shadow:0 10px 40px rgba(0,0,0,0.6);
   transform:translateY(40px);
   opacity:0;
   animation:fadeUp 0.8s forwards;
+  transition:0.4s;
+  border:1px solid rgba(255,215,120,0.15);
 }
 
+/* HOVER GLOW EFFECT */
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:
+    0 0 20px rgba(202,165,75,0.4),
+    0 0 40px rgba(245,211,122,0.2);
+}
+
+/* IMAGE */
 .card img{
   width:100%;
   height:180px;
   object-fit:cover;
+  filter:brightness(0.9);
 }
 
+/* TITLE */
 .card h3{
   padding:15px;
-  color:var(--gold1);
+  color:var(--gold-light);
 }
 
+/* ANIMATION */
 @keyframes fadeUp{
   to{
     transform:translateY(0);
