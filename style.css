@@ -64,11 +64,9 @@ header{
 /* LOGO IMAGE */
 .logo img{
   display:block;
-  max-width:120px;
+  max-width:200px;  /* increased size */
   height:auto;
   object-fit:contain;
-
-  filter:drop-shadow(0 0 10px rgba(255,215,120,0.6));
 }
 
 /* NAV CENTER */
