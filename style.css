@@ -43,8 +43,11 @@ header{
   align-items:center;
   justify-content:center;
 
-  gap:15px;
-  padding:15px 20px;
+  gap:20px;
+  padding:20px 40px;
+
+  width:100%;
+  box-sizing:border-box;
 
   background:#050505 !important;
   position:sticky;
@@ -62,23 +65,29 @@ header{
 }
 
 .logo img{
-  width:clamp(180px, 30vw, 400px);
+  width:min(60vw, 500px); /* BIGGER LOGO */
   height:auto;
   object-fit:contain;
 }
 
-/* MENU */
+/* ================= MENU ================= */
+
 nav{
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  gap:20px;
+  gap:30px;
+
+  width:100%;
+  max-width:900px;
 }
 
 nav a{
   text-decoration:none;
   color:#f5d37a !important;
   font-weight:600;
+  font-size:16px;
+  letter-spacing:0.5px;
   transition:0.3s;
 }
 
@@ -159,8 +168,7 @@ body.light .switch-thumb{
 /* CARD HOVER */
 .card:hover{
   transform:translateY(-8px);
-  box-shadow:
-    0 0 15px rgba(202,165,75,0.3);
+  box-shadow:0 0 15px rgba(202,165,75,0.3);
 }
 
 /* IMAGE */
@@ -190,11 +198,11 @@ body.light .switch-thumb{
 @media (max-width:600px){
 
   .logo img{
-    width:180px;
+    width:220px;
   }
 
   nav{
-    gap:12px;
+    gap:15px;
   }
 
   nav a{
@@ -218,14 +226,13 @@ body.light .switch-thumb{
   /* LOGO LEFT */
   .logo{
     flex:0 0 auto;
-    justify-content:flex-start;
   }
 
   /* MENU CENTER */
   nav{
     flex:1;
-    display:flex;
     justify-content:center;
+    max-width:none;
   }
 
   /* TOGGLE RIGHT */
