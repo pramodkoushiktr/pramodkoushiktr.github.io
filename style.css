@@ -63,22 +63,6 @@ nav a:hover{
   color:#ffe7a3 !important;
 }
 
-/* underline animation */
-nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-5px;
-  width:0;
-  height:2px;
-  background:linear-gradient(90deg,#7a5a21,#f5d37a);
-  transition:0.3s;
-}
-
-nav a:hover::after{
-  width:100%;
-}
-
 /* THEME SWITCH */
 .theme-switch{
   cursor:pointer;
