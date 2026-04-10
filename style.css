@@ -180,3 +180,8 @@ nav a.active::after{
   width:100%;
   background:#ffffff;
 }
+
+nav a.active{
+  color:#ffffff !important;
+  text-shadow:0 0 8px rgba(255,255,255,0.6);
+}
