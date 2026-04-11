@@ -40,8 +40,6 @@ header{
   position:sticky;
   top:0;
   z-index:1000;
-
-  position:relative;
 }
 
 /* HEADER TEXT ALWAYS WHITE */
@@ -84,7 +82,7 @@ nav{
 
 nav a{
   text-decoration:none;
-  color:#ffffff; /* ALWAYS WHITE */
+  color:#ffffff;
   font-weight:500;
   font-size:14px;
   letter-spacing:2px;
@@ -97,11 +95,19 @@ nav a:hover{
 }
 
 nav a.active{
-  font-weight:700;   /* makes it bold */
-  color:#ffffff;  
+  font-weight:700; /* BOLD ACTIVE */
 }
 
 /* ================= TOGGLE ================= */
+
+.theme-switch{
+  position:absolute;
+  right:20px;
+  top:50%;
+  transform:translateY(-50%);
+  cursor:pointer;
+  z-index:1100;
+}
 
 .switch-track{
   width:45px;
@@ -112,7 +118,6 @@ nav a.active{
   display:flex;
   align-items:center;
   padding:2px;
-
   box-sizing:border-box;
 }
 
@@ -120,17 +125,12 @@ nav a.active{
   width:18px;
   height:18px;
   border-radius:50%;
-
   background:#000; /* ALWAYS BLACK */
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
 
   transition:transform 0.3s ease;
 }
 
-/* Move thumb in light mode ONLY (no color change) */
+/* Move only */
 body.light .switch-thumb{
   transform:translateX(21px);
 }
@@ -236,10 +236,17 @@ body.light .switch-thumb{
 
 @media (min-width:1000px){
 
+  /* FIX HEADER (DOES NOT MOVE) */
   header{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+  }
+
+  /* PREVENT CONTENT HIDE */
+  body{
+    padding-top:120px;
   }
 
   .navbar{
@@ -256,13 +263,10 @@ body.light .switch-thumb{
   }
 
   nav{
-    display:flex;
     gap:40px;
-
     flex-wrap:nowrap;
     white-space:nowrap;
     justify-content:flex-start;
-
     margin-left:60px;
   }
 
