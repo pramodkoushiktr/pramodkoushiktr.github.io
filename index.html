@@ -1,62 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog - Pramod Koushik T R</title>
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+<title>Pramod | Personal Website</title>
+
+<style>
+:root {
+    --bg: #000;
+    --text: #fff;
+    --accent: #888;
+}
+
+.light {
+    --bg: #fff;
+    --text: #000;
+    --accent: #555;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.5s;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.toggle {
+    cursor: pointer;
+    border: 1px solid var(--text);
+    padding: 5px 10px;
+}
+
+section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+.fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+</style>
 </head>
 
 <body>
 
-<header>
-
-  <div class="navbar">
-
-    <div class="logo">
-      <img src="Polish_20260410_173106545.png" alt="Logo">
+<nav>
+    <div>PK</div>
+    <div>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+        <span class="toggle" onclick="toggleMode()">🌗</span>
     </div>
+</nav>
 
-    <nav>
-      <a href="index.html" class="active">BLOG</a>
-      <a href="books.html">BOOKS</a>
-      <a href="tech.html">TECH</a>
-      <a href="dheenava.html">DHEENAVA</a>
-      <a href="about.html">ABOUT</a>
-      <a href="contact.html">CONTACT</a>
-    </nav>
+<section id="home">
+    <h1 id="typing"></h1>
+    <p class="fade">Building ideas. Learning deeply.</p>
+</section>
 
-    <div class="theme-switch" onclick="toggleTheme()">
-      <div class="switch-track">
-        <div class="switch-thumb" id="themeIcon">🌙</div>
-      </div>
-    </div>
+<section id="about">
+    <h1 class="fade">About Me</h1>
+    <p class="fade">M.Tech student exploring AI, research, and startups.</p>
+</section>
 
-  </div>
+<section id="work">
+    <h1 class="fade">My Work</h1>
+    <p class="fade">Projects, research, and experiments coming soon.</p>
+</section>
 
-</header>
+<section id="contact">
+    <h1 class="fade">Contact</h1>
+    <p class="fade">your@email.com</p>
+</section>
 
-<div class="container">
-  <div class="card">
-    <img src="https://picsum.photos/400/300?3">
-    <h3>Blog Post 1</h3>
-  </div>
+<script>
+// Dark/Light Mode
+function toggleMode() {
+    document.body.classList.toggle("light");
+}
 
-  <div class="card">
-    <img src="https://picsum.photos/400/300?4">
-    <h3>Blog Post 2</h3>
-  </div>
+// Typing Effect
+const text = "Hi, I'm Pramod";
+let i = 0;
+function typing() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, 100);
+    }
+}
+typing();
 
-  <div class="card">
-    <img src="https://picsum.photos/400/300?13">
-    <h3>Deep Thoughts</h3>
-  </div>
+// Scroll Animation
+const faders = document.querySelectorAll('.fade');
 
-  <div class="card">
-    <img src="https://picsum.photos/400/300?14">
-    <h3>Creative Ideas</h3>
-  </div>
-</div>
+window.addEventListener('scroll', () => {
+    faders.forEach(el => {
+        const rect = el.getBoundingClientRect().top;
+        if (rect < window.innerHeight - 100) {
+            el.classList.add('show');
+        }
+    });
+});
+</script>
 
 </body>
 </html>
