@@ -101,7 +101,6 @@ nav a.active{
 
 /* ================= TOGGLE ================= */
 
-/* DESKTOP RIGHT EDGE */
 .theme-switch{
   position:absolute;
   right:20px;
@@ -111,7 +110,6 @@ nav a.active{
   z-index:1100;
 }
 
-/* SMALL CLEAN TOGGLE */
 .switch-track{
   width:45px;
   height:24px;
@@ -243,29 +241,36 @@ body.light .switch-thumb{
   }
 }
 
-/* ================= SMART DESKTOP LAYOUT ================= */
+/* ================= SMART DESKTOP / LANDSCAPE ================= */
 
 @media (min-width:1000px){
 
   header{
     flex-direction:row;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start; /* shift left */
   }
 
   /* LOGO LEFT */
   .logo{
     width:auto;
-    margin-right:30px;
+    margin-right:40px;
   }
 
   .logo img{
     width:260px;
   }
 
-  /* MENU CENTER */
+  /* NAVBAR */
   .navbar{
     flex:1;
-    justify-content:center;
+    display:flex;
+    align-items:center;
+  }
+
+  /* MENU SLIGHTLY LEFT */
+  nav{
+    justify-content:flex-start;
+    gap:50px;
   }
 }
