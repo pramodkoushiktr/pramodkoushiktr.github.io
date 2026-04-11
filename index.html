@@ -1,243 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pramod</title>
-
-<style>
-:root {
-    --bg: #000;
-    --line: #fff;
-}
-
-.light {
-    --bg: #fff;
-    --line: #000;
-}
-
-body {
-    margin: 0;
-    font-family: 'Courier New', monospace;
-    background: var(--bg);
-    color: var(--line);
-    overflow-x: hidden;
-}
-
-/* Canvas */
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
-/* Navbar */
-nav {
-    position: fixed;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 20px;
-}
-
-.logo {
-    letter-spacing: 2px;
-}
-
-/* Desktop Menu */
-.menu {
-    display: flex;
-    gap: 20px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: var(--line);
-    font-size: 13px;
-}
-
-/* Mobile */
-.hamburger {
-    display: none;
-    cursor: pointer;
-}
-
-/* Slide Menu */
-.mobile-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 60%;
-    height: 100%;
-    background: var(--bg);
-    border-left: 1px solid var(--line);
-    padding: 40px;
-    transition: 0.4s;
-}
-
-.mobile-menu a {
-    display: block;
-    margin: 20px 0;
-    color: var(--line);
-    text-decoration: none;
-}
-
-/* Sections */
-section {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .menu {
-        display: none;
-    }
-    .hamburger {
-        display: block;
-    }
-}
-
-</style>
+<title>Blog - Pramod Koushik T R</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
 </head>
 
 <body>
 
-<canvas id="art"></canvas>
+<header>
 
-<nav>
-    <div class="logo">PK</div>
+  <div class="navbar">
 
-    <div class="menu">
-        <a>BLOG</a>
-        <a>BOOKS</a>
-        <a>TECH</a>
-        <a>DHEENAVA</a>
-        <a>ABOUT</a>
-        <a>CONTACT</a>
+    <div class="logo">
+      <img src="Polish_20260410_173106545.png" alt="Logo">
     </div>
 
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-</nav>
+    <nav>
+      <a href="index.html" class="active">BLOG</a>
+      <a href="books.html">BOOKS</a>
+      <a href="tech.html">TECH</a>
+      <a href="dheenava.html">DHEENAVA</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-    <a>BLOG</a>
-    <a>BOOKS</a>
-    <a>TECH</a>
-    <a>DHEENAVA</a>
-    <a>ABOUT</a>
-    <a>CONTACT</a>
+    <div class="theme-switch" onclick="toggleTheme()">
+      <div class="switch-track">
+        <div class="switch-thumb" id="themeIcon">🌙</div>
+      </div>
+    </div>
+
+  </div>
+
+</header>
+
+<div class="container">
+  <div class="card">
+    <img src="https://picsum.photos/400/300?3">
+    <h3>Blog Post 1</h3>
+  </div>
+
+  <div class="card">
+    <img src="https://picsum.photos/400/300?4">
+    <h3>Blog Post 2</h3>
+  </div>
+
+  <div class="card">
+    <img src="https://picsum.photos/400/300?13">
+    <h3>Deep Thoughts</h3>
+  </div>
+
+  <div class="card">
+    <img src="https://picsum.photos/400/300?14">
+    <h3>Creative Ideas</h3>
+  </div>
 </div>
-
-<section>Welcome to my world</section>
-<section>Writing</section>
-<section>Books</section>
-<section>Tech</section>
-<section>Dheenava</section>
-<section>About</section>
-<section>Contact</section>
-
-<script>
-// Menu
-function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.style.right = menu.style.right === "0px" ? "-100%" : "0px";
-}
-
-// Canvas
-const canvas = document.getElementById("art");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let scrollY = 0;
-window.addEventListener("scroll", () => {
-    scrollY = window.scrollY;
-});
-
-let t = 0;
-
-function drawTree(x, baseY) {
-    // trunk
-    ctx.beginPath();
-    ctx.moveTo(x, baseY);
-    ctx.lineTo(x, baseY - 50);
-    ctx.stroke();
-
-    // canopy (organic blobs)
-    ctx.beginPath();
-    ctx.arc(x - 10, baseY - 70, 20, 0, Math.PI * 2);
-    ctx.arc(x + 10, baseY - 80, 18, 0, Math.PI * 2);
-    ctx.arc(x, baseY - 95, 22, 0, Math.PI * 2);
-    ctx.stroke();
-}
-
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    const color = getComputedStyle(document.body).getPropertyValue('--line');
-    ctx.strokeStyle = color;
-
-    // 🌄 Mountains (bottom only)
-    ctx.beginPath();
-    for (let x = 0; x < canvas.width; x += 50) {
-        let y = canvas.height * 0.82 + Math.sin((x + scrollY*0.4) * 0.01) * 25;
-        if (x === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-
-    // 🌳 Trees (corners only)
-    drawTree(90, canvas.height * 0.82);
-    drawTree(canvas.width - 90, canvas.height * 0.82);
-
-    // 🌞 / 🌙
-    let cx = canvas.width * 0.85;
-    let cy = 120 + Math.sin(t) * 25;
-
-    if (document.body.classList.contains("light")) {
-        // Sun
-        ctx.beginPath();
-        ctx.arc(cx, cy, 18, 0, Math.PI * 2);
-        ctx.stroke();
-
-        for (let i = 0; i < 10; i++) {
-            let a = i * (Math.PI / 5);
-            ctx.beginPath();
-            ctx.moveTo(cx, cy);
-            ctx.lineTo(cx + Math.cos(a) * 35, cy + Math.sin(a) * 35);
-            ctx.stroke();
-        }
-    } else {
-        // Moon (crescent)
-        ctx.beginPath();
-        ctx.arc(cx, cy, 18, 0, Math.PI * 2);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(cx + 8, cy - 5, 18, 0, Math.PI * 2);
-        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--bg');
-        ctx.fill();
-    }
-
-    t += 0.01;
-
-    requestAnimationFrame(draw);
-}
-
-draw();
-
-// Resize
-window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-</script>
 
 </body>
 </html>
