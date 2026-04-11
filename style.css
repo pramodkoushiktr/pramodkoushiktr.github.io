@@ -229,8 +229,13 @@ body.light .switch-thumb{
   }
 
   .theme-switch{
-    margin-left:0;
+    position:static;      /* 👈 removes overlap */
+    transform:none;
+
+    margin-top:10px;
+    align-self:flex-end;  /* 👈 push to right */
   }
+
 
   .container{
     grid-template-columns:1fr;
