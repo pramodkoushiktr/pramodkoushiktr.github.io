@@ -21,7 +21,7 @@ body.light{
 
 body{
   margin:0;
-  font-family:'Courier New', monospace;
+  font-family:'Patrick Hand', cursive;
   background:var(--bg);
   color:var(--text);
 }
