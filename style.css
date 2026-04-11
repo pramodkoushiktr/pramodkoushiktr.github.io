@@ -56,14 +56,14 @@ header a{
   align-items:center;
   justify-content:space-between;
 
-  flex-wrap:wrap;          /* 🔥 allows wrapping when needed */
-  gap:10px;
+  flex-wrap:wrap;
+  row-gap:10px;
 }
 
 /* ================= LOGO ================= */
 
 .logo{
-  flex:0 1 auto;          /* 🔥 allow flexible sizing */
+  flex:1 1 100%;
   display:flex;
   justify-content:center;
 }
