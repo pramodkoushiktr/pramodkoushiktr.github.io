@@ -258,7 +258,7 @@ body.light .switch-thumb{
   }
 
   .logo img{
-    width:260px;
+    width:min(28vw, 380px);
   }
 
   /* NAVBAR */
