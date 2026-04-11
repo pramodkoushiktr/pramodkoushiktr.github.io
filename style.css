@@ -48,12 +48,26 @@ header a{
   color:#ffffff !important;
 }
 
+/* ================= NAVBAR ================= */
+
+.navbar{
+  width:100%;
+  max-width:1200px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  flex-wrap:wrap; /* 🔥 enables smart wrapping */
+  row-gap:10px;
+}
+
 /* ================= LOGO ================= */
 
 .logo{
+  flex:1 1 100%; /* 🔥 moves to new line when needed */
   display:flex;
   justify-content:center;
-  width:100%;
 }
 
 .logo img{
@@ -62,18 +76,10 @@ header a{
   filter:grayscale(100%) contrast(200%);
 }
 
-/* ================= NAVBAR ================= */
+/* ================= MENU ================= */
 
-.navbar{
-  width:100%;
-  max-width:1200px;
-  display:flex;
-  align-items:center;
-}
-
-/* MENU DEFAULT */
 nav{
-  flex:1;
+  flex:1 1 auto;
   display:flex;
   justify-content:center;
   gap:40px;
@@ -118,7 +124,6 @@ nav a.active{
   display:flex;
   align-items:center;
   padding:2px;
-
   box-sizing:border-box;
 }
 
@@ -180,6 +185,23 @@ body.light .switch-thumb{
   }
 }
 
+/* ================= TABLET ================= */
+
+@media (max-width:900px){
+
+  html{
+    font-size:18px;
+  }
+
+  .logo img{
+    width:450px;
+  }
+
+  nav{
+    gap:25px;
+  }
+}
+
 /* ================= MOBILE ================= */
 
 @media (max-width:600px){
@@ -188,24 +210,22 @@ body.light .switch-thumb{
     font-size:22px;
   }
 
+  .logo img{
+    width:85vw;
+  }
+
   .navbar{
     flex-direction:column;
     align-items:center;
   }
 
-  .logo img{
-    width:85vw;
-  }
-
-  /* 🔥 SCROLLABLE MENU */
+  /* OPTIONAL: scroll menu on mobile */
   nav{
     width:100%;
-    display:flex;
     flex-wrap:nowrap;
     overflow-x:auto;
     justify-content:flex-start;
     gap:20px;
-
     padding:10px 0;
 
     scrollbar-width:none;
@@ -232,25 +252,6 @@ body.light .switch-thumb{
   }
 }
 
-/* ================= TABLET + DESKTOP ================= */
-
-@media (min-width:600px){
-
-  .navbar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-  }
-
-  nav{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:30px;
-    overflow:visible;
-  }
-}
-
 /* ================= DESKTOP FIX ================= */
 
 @media (min-width:1000px){
@@ -266,12 +267,16 @@ body.light .switch-thumb{
     padding-top:120px;
   }
 
+  .logo{
+    flex:0 0 auto; /* prevent full-width on desktop */
+    justify-content:flex-start;
+  }
+
   .logo img{
     width:min(28vw, 420px);
   }
 
   nav{
-    gap:40px;
     flex-wrap:nowrap;
     white-space:nowrap;
     justify-content:flex-start;
