@@ -35,13 +35,24 @@ header{
   gap:20px;
 
   padding:20px 30px;
-  background:var(--bg);
+  background:#000; /* ALWAYS BLACK */
 
   position:sticky;
   top:0;
   z-index:1000;
 
   position:relative;
+}
+
+/* Header text color handling */
+header,
+header a{
+  color:#ffffff;
+}
+
+body.light header,
+body.light header a{
+  color:#000000;
 }
 
 /* ================= LOGO ================= */
@@ -78,7 +89,7 @@ nav{
 
 nav a{
   text-decoration:none;
-  color:var(--text);
+  color:inherit;
   font-weight:500;
   font-size:14px;
   letter-spacing:2px;
@@ -91,7 +102,7 @@ nav a:hover{
 }
 
 nav a.active{
-  border-bottom:1px solid var(--text);
+  border-bottom:1px solid currentColor;
 }
 
 /* ================= TOGGLE ================= */
@@ -107,12 +118,13 @@ nav a.active{
 
 .switch-track{
   width:45px;
-  height:24px;
-  background:#111;
-  border-radius:30px;
+  height:22px;
+  background:#222;
+  border-radius:20px;
   display:flex;
   align-items:center;
-  padding:3px;
+  padding:2px;
+  border:1px solid #555;
 }
 
 .switch-thumb{
@@ -120,24 +132,18 @@ nav a.active{
   height:18px;
   border-radius:50%;
   background:#fff;
-  color:#000;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:10px;
-
   transition:0.3s;
 }
 
+/* Light mode toggle */
 body.light .switch-track{
   background:#ddd;
+  border:1px solid #aaa;
 }
 
 body.light .switch-thumb{
-  transform:translateX(21px);
+  transform:translateX(23px);
   background:#000;
-  color:#fff;
 }
 
 /* ================= CONTENT ================= */
@@ -224,7 +230,6 @@ body.light .switch-thumb{
     gap:15px;
   }
 
-  /* FIX OVERLAP */
   .theme-switch{
     position:static;
     transform:none;
