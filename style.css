@@ -100,32 +100,31 @@ nav a.active{
 
 /* ================= TOGGLE (RIGHT) ================= */
 
-/* TOGGLE AT EXTREME RIGHT */
+/* ================= TOGGLE DEFAULT (DESKTOP) ================= */
+
 .theme-switch{
   position:absolute;
-  right:25px;   /* distance from screen edge */
+  right:20px;
   top:50%;
   transform:translateY(-50%);
-
   cursor:pointer;
   z-index:1100;
 }
 
-/* BLACK WHITE TOGGLE */
+/* SMALLER SIZE */
 .switch-track{
-  width:55px;
-  height:28px;
+  width:45px;   /* smaller */
+  height:24px;
   background:#222;
   border-radius:30px;
   display:flex;
   align-items:center;
-  padding:4px;
-  transition:0.3s;
+  padding:3px;
 }
 
 .switch-thumb{
-  width:22px;
-  height:22px;
+  width:18px;
+  height:18px;
   border-radius:50%;
   background:#fff;
   color:#000;
@@ -133,18 +132,16 @@ nav a.active{
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:12px;
-
+  font-size:10px;
   transition:0.3s;
 }
 
-/* LIGHT MODE */
 body.light .switch-track{
   background:#ddd;
 }
 
 body.light .switch-thumb{
-  transform:translateX(27px);
+  transform:translateX(21px);
   background:#000;
   color:#fff;
 }
