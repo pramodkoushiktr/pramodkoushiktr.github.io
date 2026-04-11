@@ -21,6 +21,7 @@ body {
     font-family: 'Courier New', monospace;
     background: var(--bg);
     color: var(--line);
+    overflow-x: hidden;
 }
 
 /* Canvas */
@@ -35,7 +36,6 @@ canvas {
 nav {
     position: fixed;
     width: 100%;
-    top: 0;
     display: flex;
     justify-content: space-between;
     padding: 15px 20px;
@@ -45,6 +45,7 @@ nav {
     letter-spacing: 2px;
 }
 
+/* Desktop Menu */
 .menu {
     display: flex;
     gap: 20px;
@@ -56,25 +57,28 @@ nav {
     font-size: 13px;
 }
 
-/* Mobile Menu */
+/* Mobile */
 .hamburger {
     display: none;
     cursor: pointer;
 }
 
+/* Slide Menu */
 .mobile-menu {
-    display: none;
     position: fixed;
-    top: 60px;
-    right: 20px;
+    top: 0;
+    right: -100%;
+    width: 60%;
+    height: 100%;
     background: var(--bg);
-    border: 1px solid var(--line);
-    padding: 10px;
+    border-left: 1px solid var(--line);
+    padding: 40px;
+    transition: 0.4s;
 }
 
 .mobile-menu a {
     display: block;
-    margin: 10px 0;
+    margin: 20px 0;
     color: var(--line);
     text-decoration: none;
 }
@@ -86,7 +90,6 @@ section {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 20px;
 }
 
 /* Responsive */
@@ -131,18 +134,18 @@ section {
 </div>
 
 <section>Welcome to my world</section>
-<section>Thoughts & Writing</section>
-<section>Books & Learning</section>
-<section>Tech Exploration</section>
+<section>Writing</section>
+<section>Books</section>
+<section>Tech</section>
 <section>Dheenava</section>
-<section>About Me</section>
+<section>About</section>
 <section>Contact</section>
 
 <script>
-// Mobile menu
+// Menu
 function toggleMenu() {
     const menu = document.getElementById("mobileMenu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
+    menu.style.right = menu.style.right === "0px" ? "-100%" : "0px";
 }
 
 // Canvas
@@ -157,8 +160,22 @@ window.addEventListener("scroll", () => {
     scrollY = window.scrollY;
 });
 
-// Sun/Moon angle
-let angle = 0;
+let t = 0;
+
+function drawTree(x, baseY) {
+    // trunk
+    ctx.beginPath();
+    ctx.moveTo(x, baseY);
+    ctx.lineTo(x, baseY - 50);
+    ctx.stroke();
+
+    // canopy (organic blobs)
+    ctx.beginPath();
+    ctx.arc(x - 10, baseY - 70, 20, 0, Math.PI * 2);
+    ctx.arc(x + 10, baseY - 80, 18, 0, Math.PI * 2);
+    ctx.arc(x, baseY - 95, 22, 0, Math.PI * 2);
+    ctx.stroke();
+}
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -168,53 +185,54 @@ function draw() {
 
     // 🌄 Mountains (bottom only)
     ctx.beginPath();
-    for (let x = 0; x < canvas.width; x += 40) {
-        let y = canvas.height * 0.8 + Math.sin((x + scrollY*0.3) * 0.01) * 20;
+    for (let x = 0; x < canvas.width; x += 50) {
+        let y = canvas.height * 0.82 + Math.sin((x + scrollY*0.4) * 0.01) * 25;
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
     }
     ctx.stroke();
 
-    // 🌳 Trees (bottom corners only)
-    function drawTree(x, y) {
+    // 🌳 Trees (corners only)
+    drawTree(90, canvas.height * 0.82);
+    drawTree(canvas.width - 90, canvas.height * 0.82);
+
+    // 🌞 / 🌙
+    let cx = canvas.width * 0.85;
+    let cy = 120 + Math.sin(t) * 25;
+
+    if (document.body.classList.contains("light")) {
+        // Sun
         ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.lineTo(x, y - 40);
+        ctx.arc(cx, cy, 18, 0, Math.PI * 2);
+        ctx.stroke();
+
+        for (let i = 0; i < 10; i++) {
+            let a = i * (Math.PI / 5);
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(cx + Math.cos(a) * 35, cy + Math.sin(a) * 35);
+            ctx.stroke();
+        }
+    } else {
+        // Moon (crescent)
+        ctx.beginPath();
+        ctx.arc(cx, cy, 18, 0, Math.PI * 2);
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.arc(x, y - 60, 25, 0, Math.PI * 2);
-        ctx.stroke();
+        ctx.arc(cx + 8, cy - 5, 18, 0, Math.PI * 2);
+        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--bg');
+        ctx.fill();
     }
 
-    drawTree(80, canvas.height * 0.8);
-    drawTree(canvas.width - 80, canvas.height * 0.8);
-
-    // ☀️ Sun / 🌙 Moon (top safe zone)
-    let cx = canvas.width * 0.8;
-    let cy = 120 + Math.sin(angle) * 30;
-
-    ctx.beginPath();
-    ctx.arc(cx, cy, 20, 0, Math.PI * 2);
-    ctx.stroke();
-
-    // rays
-    for (let i = 0; i < 8; i++) {
-        let a = i * (Math.PI / 4);
-        ctx.beginPath();
-        ctx.moveTo(cx, cy);
-        ctx.lineTo(cx + Math.cos(a) * 35, cy + Math.sin(a) * 35);
-        ctx.stroke();
-    }
-
-    angle += 0.01;
+    t += 0.01;
 
     requestAnimationFrame(draw);
 }
 
 draw();
 
-// Resize fix
+// Resize
 window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
