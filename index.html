@@ -3,19 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pramod | Personal Website</title>
+<title>Pramod | Artistic Website</title>
 
 <style>
 :root {
     --bg: #000;
     --text: #fff;
-    --accent: #888;
 }
 
 .light {
     --bg: #fff;
     --text: #000;
-    --accent: #555;
 }
 
 body {
@@ -23,13 +21,24 @@ body {
     font-family: Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
-    transition: 0.5s;
+    overflow-x: hidden;
 }
 
+/* Canvas Background */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Navbar */
 nav {
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    position: fixed;
+    width: 100%;
 }
 
 nav a {
@@ -44,6 +53,7 @@ nav a {
     padding: 5px 10px;
 }
 
+/* Sections */
 section {
     height: 100vh;
     display: flex;
@@ -56,6 +66,7 @@ h1 {
     font-size: 3rem;
 }
 
+/* Fade Animation */
 .fade {
     opacity: 0;
     transform: translateY(20px);
@@ -72,11 +83,13 @@ h1 {
 
 <body>
 
+<canvas id="bg"></canvas>
+
 <nav>
     <div>PK</div>
     <div>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
         <a href="#work">Work</a>
         <a href="#contact">Contact</a>
         <span class="toggle" onclick="toggleMode()">🌗</span>
@@ -95,7 +108,7 @@ h1 {
 
 <section id="work">
     <h1 class="fade">My Work</h1>
-    <p class="fade">Projects, research, and experiments coming soon.</p>
+    <p class="fade">Projects coming soon.</p>
 </section>
 
 <section id="contact">
@@ -123,7 +136,6 @@ typing();
 
 // Scroll Animation
 const faders = document.querySelectorAll('.fade');
-
 window.addEventListener('scroll', () => {
     faders.forEach(el => {
         const rect = el.getBoundingClientRect().top;
@@ -131,6 +143,66 @@ window.addEventListener('scroll', () => {
             el.classList.add('show');
         }
     });
+});
+
+// 🎨 PARTICLE BACKGROUND
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 80; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5),
+        vy: (Math.random() - 0.5)
+    });
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text');
+
+    particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // bounce
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+
+        // connect lines
+        particles.forEach(p2 => {
+            let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if (dist < 120) {
+                ctx.strokeStyle = ctx.fillStyle;
+                ctx.lineWidth = 0.2;
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+            }
+        });
+    });
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+
+// Resize fix
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 });
 </script>
 
