@@ -42,16 +42,16 @@ header{
 
   padding:20px 30px;
   background:#050505;
+
   position:sticky;
   top:0;
   z-index:1000;
 
-  
   position:relative;
-
 }
 
-/* LOGO */
+/* ================= LOGO ================= */
+
 .logo{
   display:flex;
   justify-content:center;
@@ -67,13 +67,12 @@ header{
 
 .navbar{
   width:100%;
-  max-width:1100px;
-
+  max-width:1200px;
   display:flex;
   align-items:center;
 }
 
-/* MENU CENTER */
+/* MENU */
 nav{
   flex:1;
   display:flex;
@@ -87,6 +86,8 @@ nav a{
   color:#f5d37a;
   font-weight:600;
   font-size:16px;
+  letter-spacing:1px;
+  padding:6px;
   transition:0.3s;
 }
 
@@ -98,10 +99,9 @@ nav a.active{
   color:#ffffff;
 }
 
-/* ================= TOGGLE (RIGHT) ================= */
+/* ================= TOGGLE ================= */
 
-/* ================= TOGGLE DEFAULT (DESKTOP) ================= */
-
+/* DESKTOP RIGHT EDGE */
 .theme-switch{
   position:absolute;
   right:20px;
@@ -111,9 +111,9 @@ nav a.active{
   z-index:1100;
 }
 
-/* SMALLER SIZE */
+/* SMALL CLEAN TOGGLE */
 .switch-track{
-  width:45px;   /* smaller */
+  width:45px;
   height:24px;
   background:#222;
   border-radius:30px;
@@ -133,6 +133,7 @@ nav a.active{
   align-items:center;
   justify-content:center;
   font-size:10px;
+
   transition:0.3s;
 }
 
@@ -202,7 +203,7 @@ body.light .switch-thumb{
   }
 
   nav{
-    gap:20px;
+    gap:25px;
   }
 }
 
@@ -228,14 +229,13 @@ body.light .switch-thumb{
     gap:15px;
   }
 
+  /* FIX OVERLAP */
   .theme-switch{
-    position:static;      /* 👈 removes overlap */
+    position:static;
     transform:none;
-
     margin-top:10px;
-    align-self:flex-end;  /* 👈 push to right */
+    align-self:flex-end;
   }
-
 
   .container{
     grid-template-columns:1fr;
@@ -243,15 +243,29 @@ body.light .switch-thumb{
   }
 }
 
-/* ================= DESKTOP ================= */
+/* ================= SMART DESKTOP LAYOUT ================= */
 
 @media (min-width:1000px){
 
   header{
-    flex-direction:column; /* keep logo top */
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
   }
 
+  /* LOGO LEFT */
+  .logo{
+    width:auto;
+    margin-right:30px;
+  }
+
+  .logo img{
+    width:260px;
+  }
+
+  /* MENU CENTER */
   .navbar{
-    flex-direction:row;
+    flex:1;
+    justify-content:center;
   }
 }
