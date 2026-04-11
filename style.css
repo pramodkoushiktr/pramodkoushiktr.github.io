@@ -3,7 +3,6 @@
 :root{
   --bg:#000000;
   --card:#0a0a0a;
-
   --text:#ffffff;
   --muted:#888888;
 }
@@ -12,7 +11,6 @@
 body.light{
   --bg:#ffffff;
   --card:#f5f5f5;
-
   --text:#000000;
   --muted:#555555;
 }
@@ -33,16 +31,13 @@ header{
   flex-direction:column;
   align-items:center;
   gap:20px;
-
   padding:20px 30px;
   background:#000;
-
   position:sticky;
   top:0;
   z-index:1000;
 }
 
-/* HEADER TEXT ALWAYS WHITE */
 header,
 header a{
   color:#ffffff !important;
@@ -53,11 +48,9 @@ header a{
 .navbar{
   width:100%;
   max-width:1200px;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   flex-wrap:wrap;
   row-gap:10px;
 }
@@ -72,7 +65,6 @@ header a{
 
 .logo img{
   width:min(70vw, 600px);
-  height:auto;
   filter:grayscale(100%) contrast(200%);
 }
 
@@ -93,12 +85,6 @@ nav a{
   font-size:14px;
   letter-spacing:2px;
   padding:6px;
-  transition:0.3s;
-  white-space:nowrap;
-}
-
-nav a:hover{
-  color:#aaaaaa;
 }
 
 nav a.active{
@@ -113,7 +99,6 @@ nav a.active{
   top:50%;
   transform:translateY(-50%);
   cursor:pointer;
-  z-index:1100;
 }
 
 .switch-track{
@@ -121,7 +106,6 @@ nav a.active{
   height:22px;
   background:#888;
   border-radius:20px;
-
   position:relative;
 }
 
@@ -129,170 +113,46 @@ nav a.active{
   position:absolute;
   top:2px;
   left:2px;
-
   width:18px;
   height:18px;
-  border-radius:50%;
   background:#000;
-
-  display:flex;              /* 🔥 center content */
-  align-items:center;
-  justify-content:center;
-
-  font-size:10px;            /* 🔥 shrink icon */
-  line-height:1;
-
-  overflow:hidden;           /* 🔥 prevent overflow */
-
+  border-radius:50%;
   transition:left 0.25s ease;
 }
 
-/* PERFECT MOVEMENT */
 body.light .switch-thumb{
   left:calc(100% - 20px);
 }
 
-/* ================= CONTENT ================= */
+/* ================= CONTENT LAYOUT ================= */
 
 .container{
   padding:40px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
+  gap:20px;
 }
 
-.card{
-  background:var(--card);
-  border-radius:15px;
-  overflow:hidden;
-
-  box-shadow:0 8px 20px rgba(0,0,0,0.4);
-
-  transform:translateY(40px);
-  opacity:0;
-  animation:fadeUp 0.8s forwards;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-}
-
-.card img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  filter:grayscale(100%);
-}
-
-.card h3{
-  padding:15px;
-  color:var(--text);
-}
-
-/* ANIMATION */
-@keyframes fadeUp{
-  to{
-    transform:translateY(0);
-    opacity:1;
-  }
-}
-
-/* ================= TABLET ================= */
-
-@media (max-width:900px){
-
-  html{
-    font-size:18px;
-  }
-
-  .logo img{
-    width:450px;
-  }
-
-  nav{
-    gap:25px;
-  }
-}
-
-/* ================= MOBILE ================= */
-
-@media (max-width:600px){
-
-  html{
-    font-size:22px;
-  }
-
-  .logo img{
-    width:85vw;
-  }
-
-  .navbar{
-    flex-direction:column;
-    align-items:center;
-  }
-
-  /* 🔥 WRAPPING MENU (NO OVERFLOW) */
-  nav{
-    width:100%;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-
-    gap:12px 18px;
-    padding:10px 0;
-  }
-
-  nav a{
-    flex:0 1 auto;
-    font-size:13px;
-  }
-
-  .theme-switch{
-    position:static;
-    transform:none;
-    margin-top:10px;
-    align-self:flex-end;
-  }
-
+/* 3 COLUMN LAYOUT */
+@media (min-width:900px){
   .container{
-    grid-template-columns:1fr;
+    grid-template-columns: 25% 45% 30%;
+  }
+}
+
+/* MOBILE STACK */
+@media (max-width:899px){
+  .container{
+    grid-template-columns: 1fr;
     padding:15px;
   }
 }
 
-/* ================= DESKTOP FIX ================= */
+/* ================= SECTION STYLE ================= */
 
-@media (min-width:1000px){
-
-  header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-  }
-
-  body{
-    padding-top:120px;
-  }
-
-  .logo{
-    flex:0 0 auto;
-    justify-content:flex-start;
-  }
-
-  .logo img{
-    width:min(28vw, 420px);
-  }
-
-  nav{
-    flex-wrap:nowrap;
-    white-space:nowrap;
-    justify-content:flex-start;
-    margin-left:60px;
-  }
-
-  .theme-switch{
-    position:static;
-    margin-left:40px;
-  }
+.left-section,
+.middle-section,
+.right-section{
+  padding:20px;
+  background:var(--card);
+  border-radius:10px;
 }
