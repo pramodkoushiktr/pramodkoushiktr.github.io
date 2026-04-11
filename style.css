@@ -135,6 +135,15 @@ nav a.active{
   border-radius:50%;
   background:#000;
 
+  display:flex;              /* 🔥 center content */
+  align-items:center;
+  justify-content:center;
+
+  font-size:10px;            /* 🔥 shrink icon */
+  line-height:1;
+
+  overflow:hidden;           /* 🔥 prevent overflow */
+
   transition:left 0.25s ease;
 }
 
