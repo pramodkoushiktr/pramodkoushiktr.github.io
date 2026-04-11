@@ -106,12 +106,13 @@ nav a.active{
 .switch-track{
   width:45px;
   height:22px;
-  background:#222;
+  background:#888; /* ALWAYS GREY */
   border-radius:20px;
+
   display:flex;
   align-items:center;
   padding:2px;
-  border:1px solid #555;
+
   box-sizing:border-box;
 }
 
@@ -119,24 +120,19 @@ nav a.active{
   width:18px;
   height:18px;
   border-radius:50%;
-  background:#fff;
+
+  background:#000; /* ALWAYS BLACK */
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  transition:0.3s;
+  transition:transform 0.3s ease;
 }
 
-/* Light mode */
-body.light .switch-track{
-  background:#ddd;
-  border:1px solid #aaa;
-}
-
+/* Move thumb in light mode ONLY (no color change) */
 body.light .switch-thumb{
-  transform:translateX(21px); /* perfectly aligned */
-  background:#000;
+  transform:translateX(21px);
 }
 
 /* ================= CONTENT ================= */
