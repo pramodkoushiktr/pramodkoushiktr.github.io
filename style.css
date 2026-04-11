@@ -45,6 +45,10 @@ header{
   position:sticky;
   top:0;
   z-index:1000;
+
+  
+  position:relative;
+
 }
 
 /* LOGO */
@@ -96,9 +100,15 @@ nav a.active{
 
 /* ================= TOGGLE (RIGHT) ================= */
 
+/* TOGGLE AT EXTREME RIGHT */
 .theme-switch{
-  margin-left:auto;
+  position:absolute;
+  right:25px;   /* distance from screen edge */
+  top:50%;
+  transform:translateY(-50%);
+
   cursor:pointer;
+  z-index:1100;
 }
 
 /* BLACK WHITE TOGGLE */
