@@ -5,11 +5,11 @@ function toggleTheme(){
   if(current === 'light'){
     document.body.classList.remove('light');
     localStorage.setItem('theme','dark');
-    if(icon) icon.innerHTML = "☀️";
+    if(icon) icon.innerHTML = "☀︎";
   } else{
     document.body.classList.add('light');
     localStorage.setItem('theme','light');
-    if(icon) icon.innerHTML = "🌙";
+    if(icon) icon.innerHTML = "☽";
   }
 }
 
@@ -19,8 +19,8 @@ window.onload = () => {
 
   if(saved === 'light'){
     document.body.classList.add('light');
-    if(icon) icon.innerHTML = "🌙";
+    if(icon) icon.innerHTML = "☽";
   } else{
-    if(icon) icon.innerHTML = "☀️";
+    if(icon) icon.innerHTML = "☀︎";
   }
 };
