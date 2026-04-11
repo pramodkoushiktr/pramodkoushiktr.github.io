@@ -44,15 +44,10 @@ header{
   position:relative;
 }
 
-/* Header text color handling */
+/* HEADER TEXT ALWAYS WHITE */
 header,
 header a{
-  color:#ffffff;
-}
-
-body.light header,
-body.light header a{
-  color:#000000;
+  color:#ffffff !important;
 }
 
 /* ================= LOGO ================= */
@@ -89,7 +84,7 @@ nav{
 
 nav a{
   text-decoration:none;
-  color:inherit;
+  color:#ffffff; /* ALWAYS WHITE */
   font-weight:500;
   font-size:14px;
   letter-spacing:2px;
@@ -98,11 +93,11 @@ nav a{
 }
 
 nav a:hover{
-  color:var(--muted);
+  color:#aaaaaa;
 }
 
 nav a.active{
-  border-bottom:1px solid currentColor;
+  border-bottom:1px solid #ffffff;
 }
 
 /* ================= TOGGLE ================= */
