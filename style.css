@@ -138,7 +138,7 @@ nav a.active{
   transition:left 0.25s ease;
 }
 
-/* PERFECT SAFE MOVEMENT */
+/* PERFECT MOVEMENT */
 body.light .switch-thumb{
   left:calc(100% - 20px);
 }
@@ -222,26 +222,20 @@ body.light .switch-thumb{
     align-items:center;
   }
 
-  /* 🔥 SCROLLABLE MENU (FIX OVERFLOW) */
+  /* 🔥 WRAPPING MENU (NO OVERFLOW) */
   nav{
     width:100%;
-    flex-wrap:nowrap;
-    overflow-x:auto;
-    justify-content:flex-start;
-    gap:20px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
 
+    gap:12px 18px;
     padding:10px 0;
-
-    scrollbar-width:none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  nav::-webkit-scrollbar{
-    display:none;
   }
 
   nav a{
-    flex:0 0 auto;
+    flex:0 1 auto;
+    font-size:13px;
   }
 
   .theme-switch{
