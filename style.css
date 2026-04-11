@@ -35,7 +35,7 @@ header{
   gap:20px;
 
   padding:20px 30px;
-  background:#000; /* ALWAYS BLACK */
+  background:#000;
 
   position:sticky;
   top:0;
@@ -110,14 +110,15 @@ nav a.active{
 }
 
 .switch-track{
-  width:45px;
+  width:44px;
   height:22px;
-  background:#888; /* ALWAYS GREY */
+  background:#888;
   border-radius:20px;
 
   display:flex;
   align-items:center;
   padding:2px;
+
   box-sizing:border-box;
 }
 
@@ -125,14 +126,14 @@ nav a.active{
   width:18px;
   height:18px;
   border-radius:50%;
-  background:#000; /* ALWAYS BLACK */
+  background:#000;
 
   transition:transform 0.3s ease;
 }
 
-/* Move only */
+/* PERFECT MOVEMENT */
 body.light .switch-thumb{
-  transform:translateX(21px);
+  transform:translateX(20px);
 }
 
 /* ================= CONTENT ================= */
@@ -236,7 +237,6 @@ body.light .switch-thumb{
 
 @media (min-width:1000px){
 
-  /* FIX HEADER (DOES NOT MOVE) */
   header{
     position:fixed;
     top:0;
@@ -244,9 +244,8 @@ body.light .switch-thumb{
     width:100%;
   }
 
-  /* PREVENT CONTENT HIDE */
   body{
-    padding-top:120px;
+    padding-top:120px; /* prevent overlap */
   }
 
   .navbar{
