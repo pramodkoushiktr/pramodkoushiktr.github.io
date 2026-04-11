@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pramod | Personal</title>
+<title>Pramod</title>
 
 <style>
 :root {
@@ -18,10 +18,9 @@
 
 body {
     margin: 0;
-    overflow-x: hidden;
+    font-family: 'Courier New', monospace;
     background: var(--bg);
     color: var(--line);
-    font-family: 'Courier New', monospace;
 }
 
 /* Canvas */
@@ -36,34 +35,68 @@ canvas {
 nav {
     position: fixed;
     width: 100%;
+    top: 0;
     display: flex;
-    justify-content: center;
-    gap: 25px;
-    padding: 20px;
+    justify-content: space-between;
+    padding: 15px 20px;
 }
 
-nav a {
-    color: var(--line);
-    text-decoration: none;
-    font-size: 14px;
+.logo {
     letter-spacing: 2px;
 }
 
-/* Toggle */
-.toggle {
-    position: fixed;
-    right: 20px;
-    top: 20px;
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: var(--line);
+    font-size: 13px;
+}
+
+/* Mobile Menu */
+.hamburger {
+    display: none;
     cursor: pointer;
 }
 
-/* Content */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 10px;
+}
+
+.mobile-menu a {
+    display: block;
+    margin: 10px 0;
+    color: var(--line);
+    text-decoration: none;
+}
+
+/* Sections */
 section {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+    }
 }
 
 </style>
@@ -74,98 +107,114 @@ section {
 <canvas id="art"></canvas>
 
 <nav>
+    <div class="logo">PK</div>
+
+    <div class="menu">
+        <a>BLOG</a>
+        <a>BOOKS</a>
+        <a>TECH</a>
+        <a>DHEENAVA</a>
+        <a>ABOUT</a>
+        <a>CONTACT</a>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
     <a>BLOG</a>
     <a>BOOKS</a>
     <a>TECH</a>
     <a>DHEENAVA</a>
     <a>ABOUT</a>
     <a>CONTACT</a>
-</nav>
-
-<div class="toggle" onclick="toggleMode()">🌗</div>
+</div>
 
 <section>Welcome to my world</section>
+<section>Thoughts & Writing</section>
+<section>Books & Learning</section>
+<section>Tech Exploration</section>
+<section>Dheenava</section>
+<section>About Me</section>
+<section>Contact</section>
 
 <script>
-function toggleMode() {
-    document.body.classList.toggle("light");
+// Mobile menu
+function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 
-// Canvas Setup
+// Canvas
 const canvas = document.getElementById("art");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// Sun/Moon
+let scrollY = 0;
+window.addEventListener("scroll", () => {
+    scrollY = window.scrollY;
+});
+
+// Sun/Moon angle
 let angle = 0;
 
-// Birds
-let birds = [];
-for (let i = 0; i < 5; i++) {
-    birds.push({
-        x: Math.random() * canvas.width,
-        y: 100 + Math.random() * 100,
-        speed: 1 + Math.random()
-    });
-}
-
-function drawScene() {
+function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     const color = getComputedStyle(document.body).getPropertyValue('--line');
     ctx.strokeStyle = color;
-    ctx.fillStyle = color;
 
-    // 🌄 Mountains (hand-drawn zigzag)
+    // 🌄 Mountains (bottom only)
     ctx.beginPath();
-    ctx.moveTo(0, canvas.height * 0.7);
-
-    for (let x = 0; x < canvas.width; x += 50) {
-        let y = canvas.height * 0.7 + Math.sin(x * 0.01) * 30;
-        ctx.lineTo(x, y);
+    for (let x = 0; x < canvas.width; x += 40) {
+        let y = canvas.height * 0.8 + Math.sin((x + scrollY*0.3) * 0.01) * 20;
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
     }
     ctx.stroke();
 
-    // 🌳 Tree
-    ctx.beginPath();
-    ctx.moveTo(100, canvas.height * 0.7);
-    ctx.lineTo(100, canvas.height * 0.6);
-    ctx.stroke();
+    // 🌳 Trees (bottom corners only)
+    function drawTree(x, y) {
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x, y - 40);
+        ctx.stroke();
 
-    ctx.beginPath();
-    ctx.arc(100, canvas.height * 0.55, 30, 0, Math.PI * 2);
-    ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(x, y - 60, 25, 0, Math.PI * 2);
+        ctx.stroke();
+    }
 
-    // ☀️ Sun / 🌙 Moon
+    drawTree(80, canvas.height * 0.8);
+    drawTree(canvas.width - 80, canvas.height * 0.8);
+
+    // ☀️ Sun / 🌙 Moon (top safe zone)
     let cx = canvas.width * 0.8;
-    let cy = 100 + Math.sin(angle) * 50;
+    let cy = 120 + Math.sin(angle) * 30;
 
     ctx.beginPath();
     ctx.arc(cx, cy, 20, 0, Math.PI * 2);
     ctx.stroke();
 
+    // rays
+    for (let i = 0; i < 8; i++) {
+        let a = i * (Math.PI / 4);
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(a) * 35, cy + Math.sin(a) * 35);
+        ctx.stroke();
+    }
+
     angle += 0.01;
 
-    // 🐦 Birds
-    birds.forEach(b => {
-        ctx.beginPath();
-        ctx.moveTo(b.x, b.y);
-        ctx.lineTo(b.x + 10, b.y - 5);
-        ctx.lineTo(b.x + 20, b.y);
-        ctx.stroke();
-
-        b.x += b.speed;
-        if (b.x > canvas.width) b.x = -20;
-    });
-
-    requestAnimationFrame(drawScene);
+    requestAnimationFrame(draw);
 }
 
-drawScene();
+draw();
 
-// Resize
+// Resize fix
 window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
