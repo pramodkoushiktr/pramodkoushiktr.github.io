@@ -58,14 +58,14 @@ header a{
   align-items:center;
   justify-content:space-between;
 
-  flex-wrap:wrap; /* 🔥 enables smart wrapping */
+  flex-wrap:wrap;
   row-gap:10px;
 }
 
 /* ================= LOGO ================= */
 
 .logo{
-  flex:1 1 100%; /* 🔥 moves to new line when needed */
+  flex:1 1 100%;
   display:flex;
   justify-content:center;
 }
@@ -94,6 +94,7 @@ nav a{
   letter-spacing:2px;
   padding:6px;
   transition:0.3s;
+  white-space:nowrap;
 }
 
 nav a:hover{
@@ -121,23 +122,25 @@ nav a.active{
   background:#888;
   border-radius:20px;
 
-  display:flex;
-  align-items:center;
-  padding:2px;
-  box-sizing:border-box;
+  position:relative;
 }
 
 .switch-thumb{
+  position:absolute;
+  top:2px;
+  left:2px;
+
   width:18px;
   height:18px;
   border-radius:50%;
   background:#000;
 
-  transition:transform 0.3s ease;
+  transition:left 0.25s ease;
 }
 
+/* PERFECT SAFE MOVEMENT */
 body.light .switch-thumb{
-  transform:translateX(20px);
+  left:calc(100% - 20px);
 }
 
 /* ================= CONTENT ================= */
@@ -219,16 +222,18 @@ body.light .switch-thumb{
     align-items:center;
   }
 
-  /* OPTIONAL: scroll menu on mobile */
+  /* 🔥 SCROLLABLE MENU (FIX OVERFLOW) */
   nav{
     width:100%;
     flex-wrap:nowrap;
     overflow-x:auto;
     justify-content:flex-start;
     gap:20px;
+
     padding:10px 0;
 
     scrollbar-width:none;
+    -webkit-overflow-scrolling: touch;
   }
 
   nav::-webkit-scrollbar{
@@ -268,7 +273,7 @@ body.light .switch-thumb{
   }
 
   .logo{
-    flex:0 0 auto; /* prevent full-width on desktop */
+    flex:0 0 auto;
     justify-content:flex-start;
   }
 
