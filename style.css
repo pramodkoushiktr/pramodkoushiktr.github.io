@@ -97,19 +97,11 @@ nav a:hover{
 }
 
 nav a.active{
-  border-bottom:1px solid #ffffff;
+  font-weight:700;   /* makes it bold */
+  color:#ffffff;  
 }
 
 /* ================= TOGGLE ================= */
-
-.theme-switch{
-  position:absolute;
-  right:20px;
-  top:50%;
-  transform:translateY(-50%);
-  cursor:pointer;
-  z-index:1100;
-}
 
 .switch-track{
   width:45px;
@@ -120,6 +112,7 @@ nav a.active{
   align-items:center;
   padding:2px;
   border:1px solid #555;
+  box-sizing:border-box;
 }
 
 .switch-thumb{
@@ -127,17 +120,22 @@ nav a.active{
   height:18px;
   border-radius:50%;
   background:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   transition:0.3s;
 }
 
-/* Light mode toggle */
+/* Light mode */
 body.light .switch-track{
   background:#ddd;
   border:1px solid #aaa;
 }
 
 body.light .switch-thumb{
-  transform:translateX(23px);
+  transform:translateX(21px); /* perfectly aligned */
   background:#000;
 }
 
