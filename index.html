@@ -3,28 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pramod | Artistic Website</title>
+<title>Pramod | Personal</title>
 
 <style>
 :root {
     --bg: #000;
-    --text: #fff;
+    --line: #fff;
 }
 
 .light {
     --bg: #fff;
-    --text: #000;
+    --line: #000;
 }
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
     overflow-x: hidden;
+    background: var(--bg);
+    color: var(--line);
+    font-family: 'Courier New', monospace;
 }
 
-/* Canvas Background */
+/* Canvas */
 canvas {
     position: fixed;
     top: 0;
@@ -34,48 +34,36 @@ canvas {
 
 /* Navbar */
 nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
     position: fixed;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px;
 }
 
 nav a {
-    color: var(--text);
+    color: var(--line);
     text-decoration: none;
-    margin: 0 10px;
+    font-size: 14px;
+    letter-spacing: 2px;
 }
 
+/* Toggle */
 .toggle {
+    position: fixed;
+    right: 20px;
+    top: 20px;
     cursor: pointer;
-    border: 1px solid var(--text);
-    padding: 5px 10px;
 }
 
-/* Sections */
+/* Content */
 section {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-}
-
-h1 {
-    font-size: 3rem;
-}
-
-/* Fade Animation */
-.fade {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 1s;
-}
-
-.fade.show {
-    opacity: 1;
-    transform: translateY(0);
+    font-size: 2rem;
 }
 
 </style>
@@ -83,123 +71,101 @@ h1 {
 
 <body>
 
-<canvas id="bg"></canvas>
+<canvas id="art"></canvas>
 
 <nav>
-    <div>PK</div>
-    <div>
-        <a href="#home">HOME</a>
-        <a href="#about">ABOUT</a>
-        <a href="#work">Work</a>
-        <a href="#contact">Contact</a>
-        <span class="toggle" onclick="toggleMode()">🌗</span>
-    </div>
+    <a>BLOG</a>
+    <a>BOOKS</a>
+    <a>TECH</a>
+    <a>DHEENAVA</a>
+    <a>ABOUT</a>
+    <a>CONTACT</a>
 </nav>
 
-<section id="home">
-    <h1 id="typing"></h1>
-    <p class="fade">Building ideas. Learning deeply.</p>
-</section>
+<div class="toggle" onclick="toggleMode()">🌗</div>
 
-<section id="about">
-    <h1 class="fade">About Me</h1>
-    <p class="fade">M.Tech student exploring AI, research, and startups.</p>
-</section>
-
-<section id="work">
-    <h1 class="fade">My Work</h1>
-    <p class="fade">Projects coming soon.</p>
-</section>
-
-<section id="contact">
-    <h1 class="fade">Contact</h1>
-    <p class="fade">your@email.com</p>
-</section>
+<section>Welcome to my world</section>
 
 <script>
-// Dark/Light Mode
 function toggleMode() {
     document.body.classList.toggle("light");
 }
 
-// Typing Effect
-const text = "Hi, I'm Pramod";
-let i = 0;
-function typing() {
-    if (i < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typing, 100);
-    }
-}
-typing();
-
-// Scroll Animation
-const faders = document.querySelectorAll('.fade');
-window.addEventListener('scroll', () => {
-    faders.forEach(el => {
-        const rect = el.getBoundingClientRect().top;
-        if (rect < window.innerHeight - 100) {
-            el.classList.add('show');
-        }
-    });
-});
-
-// 🎨 PARTICLE BACKGROUND
-const canvas = document.getElementById("bg");
+// Canvas Setup
+const canvas = document.getElementById("art");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let particles = [];
+// Sun/Moon
+let angle = 0;
 
-for (let i = 0; i < 80; i++) {
-    particles.push({
+// Birds
+let birds = [];
+for (let i = 0; i < 5; i++) {
+    birds.push({
         x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5),
-        vy: (Math.random() - 0.5)
+        y: 100 + Math.random() * 100,
+        speed: 1 + Math.random()
     });
 }
 
-function draw() {
+function drawScene() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text');
+    const color = getComputedStyle(document.body).getPropertyValue('--line');
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
 
-    particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
+    // 🌄 Mountains (hand-drawn zigzag)
+    ctx.beginPath();
+    ctx.moveTo(0, canvas.height * 0.7);
 
-        // bounce
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+    for (let x = 0; x < canvas.width; x += 50) {
+        let y = canvas.height * 0.7 + Math.sin(x * 0.01) * 30;
+        ctx.lineTo(x, y);
+    }
+    ctx.stroke();
 
+    // 🌳 Tree
+    ctx.beginPath();
+    ctx.moveTo(100, canvas.height * 0.7);
+    ctx.lineTo(100, canvas.height * 0.6);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(100, canvas.height * 0.55, 30, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // ☀️ Sun / 🌙 Moon
+    let cx = canvas.width * 0.8;
+    let cy = 100 + Math.sin(angle) * 50;
+
+    ctx.beginPath();
+    ctx.arc(cx, cy, 20, 0, Math.PI * 2);
+    ctx.stroke();
+
+    angle += 0.01;
+
+    // 🐦 Birds
+    birds.forEach(b => {
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.moveTo(b.x, b.y);
+        ctx.lineTo(b.x + 10, b.y - 5);
+        ctx.lineTo(b.x + 20, b.y);
+        ctx.stroke();
 
-        // connect lines
-        particles.forEach(p2 => {
-            let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-            if (dist < 120) {
-                ctx.strokeStyle = ctx.fillStyle;
-                ctx.lineWidth = 0.2;
-                ctx.beginPath();
-                ctx.moveTo(p.x, p.y);
-                ctx.lineTo(p2.x, p2.y);
-                ctx.stroke();
-            }
-        });
+        b.x += b.speed;
+        if (b.x > canvas.width) b.x = -20;
     });
 
-    requestAnimationFrame(draw);
+    requestAnimationFrame(drawScene);
 }
 
-draw();
+drawScene();
 
-// Resize fix
+// Resize
 window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
