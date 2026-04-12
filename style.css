@@ -147,8 +147,8 @@ body.light .switch-thumb{
   height:auto;
 
   /* fade edges */
-  -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);
-  mask-image: radial-gradient(circle, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle, black 80%, transparent 100%);
+  mask-image: radial-gradient(circle, black 80%, transparent 100%);
 
   /* smooth blending */
   display:block;
