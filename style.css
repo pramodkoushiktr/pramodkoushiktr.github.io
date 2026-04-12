@@ -241,6 +241,25 @@ body.light .switch-thumb{
   min-height:420px;
 }
 
+.right-section{
+  min-height:420px;
+}
+
+/* 🔥 ADD HERE */
+.container a{
+  color:var(--text);
+  text-decoration:none;
+  border-bottom:1px solid var(--muted);
+}
+
+.container a:visited{
+  color:var(--text);
+}
+
+.container a:hover{
+  border-bottom:1px solid var(--text);
+}
+
 /* ================= TABLET ================= */
 
 @media (max-width:900px){
