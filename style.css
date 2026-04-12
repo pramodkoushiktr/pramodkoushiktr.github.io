@@ -149,14 +149,22 @@ body.light .switch-thumb{
   -webkit-mask-image:
     linear-gradient(to right,
       transparent 0%,
-      black 20%,
-      black 80%,
+      rgba(0,0,0,0.2) 10%,
+      rgba(0,0,0,0.6) 20%,
+      black 35%,     /* 🔥 changed */
+      black 65%,     /* 🔥 changed */
+      rgba(0,0,0,0.6) 80%,
+      rgba(0,0,0,0.2) 90%,
       transparent 100%
     ),
     linear-gradient(to bottom,
       transparent 0%,
-      black 20%,
-      black 80%,
+      rgba(0,0,0,0.2) 10%,
+      rgba(0,0,0,0.6) 20%,
+      black 35%,     /* 🔥 changed */
+      black 65%,     /* 🔥 changed */
+      rgba(0,0,0,0.6) 80%,
+      rgba(0,0,0,0.2) 90%,
       transparent 100%
     );
 
@@ -166,14 +174,22 @@ body.light .switch-thumb{
   mask-image:
     linear-gradient(to right,
       transparent 0%,
-      black 20%,
-      black 80%,
+      rgba(0,0,0,0.2) 10%,
+      rgba(0,0,0,0.6) 20%,
+      black 35%,
+      black 65%,
+      rgba(0,0,0,0.6) 80%,
+      rgba(0,0,0,0.2) 90%,
       transparent 100%
     ),
     linear-gradient(to bottom,
       transparent 0%,
-      black 20%,
-      black 80%,
+      rgba(0,0,0,0.2) 10%,
+      rgba(0,0,0,0.6) 20%,
+      black 35%,
+      black 65%,
+      rgba(0,0,0,0.6) 80%,
+      rgba(0,0,0,0.2) 90%,
       transparent 100%
     );
 }
