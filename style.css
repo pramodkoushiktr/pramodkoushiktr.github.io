@@ -145,13 +145,36 @@ body.light .switch-thumb{
 .fade-image{
   width:100%;
   height:auto;
-
-  /* fade edges */
-  -webkit-mask-image: radial-gradient(circle, black 100%, transparent 100%);
-  mask-image: radial-gradient(circle, black 100%, transparent 100%);
-
-  /* smooth blending */
   display:block;
+
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    ),
+    linear-gradient(to bottom,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    ),
+    linear-gradient(to bottom,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
 }
 
 /* 🔥 PERFECT RATIO LAYOUT */
