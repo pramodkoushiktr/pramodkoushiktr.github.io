@@ -151,8 +151,8 @@ body.light .switch-thumb{
       transparent 0%,
       rgba(0,0,0,0.2) 10%,
       rgba(0,0,0,0.6) 20%,
-      black 30%,
-      black 70%,
+      black 35%,     /* 🔥 changed */
+      black 65%,     /* 🔥 changed */
       rgba(0,0,0,0.6) 80%,
       rgba(0,0,0,0.2) 90%,
       transparent 100%
@@ -161,8 +161,8 @@ body.light .switch-thumb{
       transparent 0%,
       rgba(0,0,0,0.2) 10%,
       rgba(0,0,0,0.6) 20%,
-      black 30%,
-      black 70%,
+      black 35%,     /* 🔥 changed */
+      black 65%,     /* 🔥 changed */
       rgba(0,0,0,0.6) 80%,
       rgba(0,0,0,0.2) 90%,
       transparent 100%
@@ -176,8 +176,8 @@ body.light .switch-thumb{
       transparent 0%,
       rgba(0,0,0,0.2) 10%,
       rgba(0,0,0,0.6) 20%,
-      black 30%,
-      black 70%,
+      black 35%,
+      black 65%,
       rgba(0,0,0,0.6) 80%,
       rgba(0,0,0,0.2) 90%,
       transparent 100%
@@ -186,8 +186,8 @@ body.light .switch-thumb{
       transparent 0%,
       rgba(0,0,0,0.2) 10%,
       rgba(0,0,0,0.6) 20%,
-      black 30%,
-      black 70%,
+      black 35%,
+      black 65%,
       rgba(0,0,0,0.6) 80%,
       rgba(0,0,0,0.2) 90%,
       transparent 100%
