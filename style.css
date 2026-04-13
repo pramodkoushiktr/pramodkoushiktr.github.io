@@ -27,6 +27,7 @@ body{
   margin:0;
   font-family: 'Patrick Hand', cursive;
   font-weight:300;
+  letter-spacing: 0.5px;
   background:var(--bg);
   color:var(--text);
 }
