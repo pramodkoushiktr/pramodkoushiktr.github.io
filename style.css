@@ -293,11 +293,15 @@ body.light .switch-thumb{
 @media (max-width:600px){
 
   html{
-    font-size:24px; /* 🔥 increased from 22px */
+    font-size:16px; /* ✅ reduced from 24px for proper mobile scaling */
+  }
+
+  body{
+    line-height:1.6; /* improves readability */
   }
 
   .logo img{
-    width:85vw;
+    width:80vw; /* slightly reduced */
   }
 
   .navbar{
@@ -311,13 +315,30 @@ body.light .switch-thumb{
     flex-wrap:wrap;
     justify-content:center;
 
-    gap:12px 18px;
-    padding:10px 0;
+    gap:10px 14px; /* slightly tighter spacing */
+    padding:8px 0;
   }
 
   nav a{
     flex:0 1 auto;
-    font-size:15px; /* 🔥 increased from 13px */
+    font-size:14px; /* balanced size */
+  }
+
+  /* Optional: control headings if they look too big */
+  h1{
+    font-size:1.6rem;
+  }
+
+  h2{
+    font-size:1.4rem;
+  }
+
+  h3{
+    font-size:1.2rem;
+  }
+
+  p{
+    font-size:1rem;
   }
 
   .theme-switch{
