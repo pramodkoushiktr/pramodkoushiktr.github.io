@@ -13,18 +13,6 @@ function toggleTheme(){
   }
 }
 
-window.onload = () => {
-  const saved = localStorage.getItem('theme');
-  const icon = document.getElementById('themeIcon');
-
-  if(saved === 'light'){
-    document.body.classList.add('light');
-    if(icon) icon.innerHTML = "☽";
-  } else{
-    if(icon) icon.innerHTML = "☀︎";
-  }
-};
-
 function toggleLanguage() {
   const en = document.getElementById("content-en");
   const kn = document.getElementById("content-kn");
@@ -40,12 +28,32 @@ function toggleLanguage() {
   }
 }
 
-// Load saved language
-window.onload = function() {
-  const lang = localStorage.getItem("lang");
+/* ✅ SINGLE LOAD HANDLER (IMPORTANT FIX) */
+window.onload = function () {
+  const savedTheme = localStorage.getItem('theme');
+  const savedLang = localStorage.getItem('lang');
+  const icon = document.getElementById('themeIcon');
 
-  if (lang === "kn") {
-    document.getElementById("content-en").style.display = "none";
-    document.getElementById("content-kn").style.display = "block";
+  /* ===== THEME RESTORE ===== */
+  if (savedTheme === 'light') {
+    document.body.classList.add('light');
+    if (icon) icon.innerHTML = "☽";
+  } else {
+    document.body.classList.remove('light');
+    if (icon) icon.innerHTML = "☀︎";
   }
-}
+
+  /* ===== LANGUAGE RESTORE ===== */
+  const en = document.getElementById("content-en");
+  const kn = document.getElementById("content-kn");
+
+  if (en && kn) {
+    if (savedLang === "kn") {
+      en.style.display = "none";
+      kn.style.display = "block";
+    } else {
+      en.style.display = "block";
+      kn.style.display = "none";
+    }
+  }
+};
