@@ -25,7 +25,7 @@ html{
 
 body{
   margin:0;
-  font-family:'Pangolin', cursive;
+  font-family:'Source Sans 3', sans-serif;
   background:var(--bg);
   color:var(--text);
 }
