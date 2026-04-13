@@ -149,6 +149,11 @@ body.light .switch-thumb{
   gap:20px;
 }
 
+.normal-image{
+  width:100%;
+  display:block;
+}
+
 .fade-image{
   width:100%;
   display:block;
