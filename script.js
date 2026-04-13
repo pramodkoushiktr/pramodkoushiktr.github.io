@@ -24,3 +24,28 @@ window.onload = () => {
     if(icon) icon.innerHTML = "☀︎";
   }
 };
+
+function toggleLanguage() {
+  const en = document.getElementById("content-en");
+  const kn = document.getElementById("content-kn");
+
+  if (en.style.display === "none") {
+    en.style.display = "block";
+    kn.style.display = "none";
+    localStorage.setItem("lang", "en");
+  } else {
+    en.style.display = "none";
+    kn.style.display = "block";
+    localStorage.setItem("lang", "kn");
+  }
+}
+
+// Load saved language
+window.onload = function() {
+  const lang = localStorage.getItem("lang");
+
+  if (lang === "kn") {
+    document.getElementById("content-en").style.display = "none";
+    document.getElementById("content-kn").style.display = "block";
+  }
+}
