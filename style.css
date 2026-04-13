@@ -25,7 +25,7 @@ html{
 
 body{
   margin:0;
-  font-family: "Inter", sans-serif;
+  font-family: 'Patrick Hand', cursive;
   background:var(--bg);
   color:var(--text);
 }
