@@ -26,6 +26,7 @@ html{
 body{
   margin:0;
   font-family: 'Patrick Hand', cursive;
+  font-weight:300;
   background:var(--bg);
   color:var(--text);
 }
