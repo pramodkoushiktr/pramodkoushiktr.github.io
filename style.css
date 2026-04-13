@@ -140,6 +140,23 @@ nav a.active{
 body.light .switch-thumb{
   left:calc(100% - 20px);
 }
+/* ================== BUTTON ====================*/
+
+button {
+  background-color: #777;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 999px;  /* perfect pill shape */
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
 
 /* ================= CONTENT ================= */
 
