@@ -18,7 +18,7 @@ body.light{
 /* ================= GLOBAL TEXT SIZE ================= */
 
 html{
-  font-size:18px; /* 🔥 increased from default 16px */
+  font-size:18px;
 }
 
 /* ================= BODY ================= */
@@ -27,7 +27,7 @@ body{
   margin:0;
   font-family: 'Patrick Hand', cursive;
   font-weight:300;
-  letter-spacing: 0.5px;
+  letter-spacing:0.3px;
   background:var(--bg);
   color:var(--text);
 }
@@ -90,14 +90,14 @@ nav a{
   text-decoration:none;
   color:#ffffff;
   font-weight:400;
-  font-size:16px; /* 🔥 increased from 14px */
+  font-size:16px;
   letter-spacing:2px;
   padding:6px;
 }
 
 nav a.active{
   font-weight:600;
-  font-style:italic !important;
+  font-style:italic;
 }
 
 /* ================= TOGGLE ================= */
@@ -126,15 +126,12 @@ nav a.active{
   height:18px;
   background:#000;
   border-radius:50%;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
-  font-size:12px; /* 🔥 increased from 10px */
+  font-size:12px;
   line-height:1;
   overflow:hidden;
-
   transition:left 0.25s ease;
 }
 
@@ -142,22 +139,23 @@ nav a.active{
 body.light .switch-thumb{
   left:calc(100% - 20px);
 }
-/* ================== BUTTON ====================*/
 
-button {
-  background-color: #777;
-  color: #fff;
-  border: none;
-  padding: 4px 10px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 12px;
-  transition: 0.3s ease;
+/* ================= BUTTON ================= */
+
+button{
+  background-color:#777;
+  color:#fff;
+  border:none;
+  padding:4px 10px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:12px;
+  transition:0.3s ease;
 }
 
-button:hover {
-  background-color: #555;
-  transform: scale(1.05);
+button:hover{
+  background-color:#555;
+  transform:scale(1.05);
 }
 
 /* ================= CONTENT ================= */
@@ -166,18 +164,17 @@ button:hover {
   padding:40px;
   display:grid;
   gap:20px;
-  text-align: justify;
+  text-align:justify;
 }
 
-.normal-image{
-  width:100%;
-  display:block;
-}
-
+.normal-image,
 .fade-image{
   width:100%;
   display:block;
+}
 
+/* IMAGE MASK */
+.fade-image{
   -webkit-mask-image:
     linear-gradient(to right,
       transparent 0%,
@@ -226,23 +223,19 @@ button:hover {
     );
 }
 
-/* 🔥 PERFECT RATIO LAYOUT */
+/* ================= LAYOUT ================= */
+
 @media (min-width:900px){
-
   .container{
-    grid-template-columns: 1fr 1.8fr 1.2fr;
+    grid-template-columns:1fr 1.8fr 1.2fr;
   }
-
 }
 
-/* MOBILE STACK */
 @media (max-width:899px){
-
   .container{
     grid-template-columns:1fr;
     padding:15px;
   }
-
 }
 
 /* ================= SECTIONS ================= */
@@ -255,73 +248,39 @@ button:hover {
   border-radius:10px;
 }
 
-.left-section{
-  min-height:400px;
-}
+.left-section{ min-height:400px; }
+.middle-section{ min-height:500px; }
+.right-section{ min-height:420px; }
 
-.middle-section{
-  min-height:500px;
-}
+/* ================= LINKS ================= */
 
-.right-section{
-  min-height:420px;
-}
-
-.right-section{
-  min-height:420px;
-}
-
-/* 🔥 ADD HERE */
-.container a{
-  color:var(--text);
-  text-decoration:none;
-  border-bottom:none;
-}
-
+.container a,
 .container a:visited{
   color:var(--text);
   text-decoration:none;
-  border-bottom:none;
 }
 
 .container a:hover{
   color:var(--text);
   font-weight:700;
-  border-bottom:none;
 }
 
 /* ================= TABLET ================= */
 
 @media (max-width:900px){
-
-  html{
-    font-size:20px; /* 🔥 increased from 18px */
-  }
-
-  .logo img{
-    width:450px;
-  }
-
-  nav{
-    gap:25px;
-  }
+  html{ font-size:20px; }
+  .logo img{ width:450px; }
+  nav{ gap:25px; }
 }
 
 /* ================= MOBILE ================= */
 
 @media (max-width:600px){
+  html{ font-size:16px; }
 
-  html{
-    font-size:16px; /* ✅ reduced from 24px for proper mobile scaling */
-  }
+  body{ line-height:1.6; }
 
-  body{
-    line-height:1.6; /* improves readability */
-  }
-
-  .logo img{
-    width:80vw; /* slightly reduced */
-  }
+  .logo img{ width:80vw; }
 
   .navbar{
     flex-direction:column;
@@ -333,32 +292,19 @@ button:hover {
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-
-    gap:10px 14px; /* slightly tighter spacing */
+    gap:10px 14px;
     padding:8px 0;
   }
 
   nav a{
     flex:0 1 auto;
-    font-size:14px; /* balanced size */
+    font-size:14px;
   }
 
-  /* Optional: control headings if they look too big */
-  h1{
-    font-size:1.6rem;
-  }
-
-  h2{
-    font-size:1.4rem;
-  }
-
-  h3{
-    font-size:1.2rem;
-  }
-
-  p{
-    font-size:1rem;
-  }
+  h1{ font-size:1.6rem; }
+  h2{ font-size:1.4rem; }
+  h3{ font-size:1.2rem; }
+  p{ font-size:1rem; }
 
   .theme-switch{
     position:static;
@@ -371,7 +317,6 @@ button:hover {
 /* ================= DESKTOP FIX ================= */
 
 @media (min-width:1000px){
-
   header{
     position:fixed;
     top:0;
