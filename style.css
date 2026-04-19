@@ -268,7 +268,7 @@ button:hover{
 /* ================ CONTECT BOX ==========================*/
 
 #contact-form {
-  max-width: 500px; /* optional: controls overall form width */
+  width: 100%;
 }
 
 #contact-form input,
@@ -276,8 +276,7 @@ button:hover{
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
-  box-sizing: border-box; /* ensures padding doesn't break width */
-}
+  box-sizing: border-box; 
 
 #contact-form button {
   padding: 10px 20px;
