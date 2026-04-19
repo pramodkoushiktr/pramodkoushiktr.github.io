@@ -265,6 +265,24 @@ button:hover{
   font-weight:700;
 }
 
+/* ================ CONTECT BOX ==========================*/
+
+#contact-form {
+  max-width: 500px; /* optional: controls overall form width */
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box; /* ensures padding doesn't break width */
+}
+
+#contact-form button {
+  padding: 10px 20px;
+}
+
 /* ================= TABLET ================= */
 
 @media (max-width:900px){
