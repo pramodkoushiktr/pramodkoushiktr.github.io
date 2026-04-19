@@ -13,19 +13,20 @@ function toggleTheme(){
   }
 }
 
-function toggleLanguage() {
-  const en = document.getElementById("content-en");
-  const kn = document.getElementById("content-kn");
+function setLanguage(lang) {
+  const sections = document.querySelectorAll(".lang");
 
-  if (en.style.display === "none") {
-    en.style.display = "block";
-    kn.style.display = "none";
-    localStorage.setItem("lang", "en");
-  } else {
-    en.style.display = "none";
-    kn.style.display = "block";
-    localStorage.setItem("lang", "kn");
-  }
+  // hide all languages
+  sections.forEach(sec => {
+    sec.style.display = "none";
+  });
+
+  // show selected language
+  const active = document.getElementById("content-" + lang);
+  if (active) active.style.display = "block";
+
+  // save choice
+  localStorage.setItem("lang", lang);
 }
 
 /* ✅ SINGLE LOAD HANDLER (IMPORTANT FIX) */
@@ -44,16 +45,6 @@ window.onload = function () {
   }
 
   /* ===== LANGUAGE RESTORE ===== */
-  const en = document.getElementById("content-en");
-  const kn = document.getElementById("content-kn");
-
-  if (en && kn) {
-    if (savedLang === "kn") {
-      en.style.display = "none";
-      kn.style.display = "block";
-    } else {
-      en.style.display = "block";
-      kn.style.display = "none";
-    }
-  }
+  const defaultLang = savedLang || "en";
+  setLanguage(defaultLang);
 };
