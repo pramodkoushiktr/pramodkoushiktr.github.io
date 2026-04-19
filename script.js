@@ -46,3 +46,22 @@ window.onload = function () {
   const defaultLang = savedLang || "en";
   setLanguage(defaultLang);
 };
+
+/* ==================this is the contact text box saving thing============*/
+
+document.getElementById("contact-form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+    
+  const data = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    message: document.getElementById("message").value
+  };
+    
+  await fetch("https://script.google.com/macros/s/AKfycbzGkGWgM_Y5WjfPV2ng9lDyGUoOa7N7iU8pS50kouFZwkPE0xpd8UHRsKj3idE3NuyClA/exec", {
+     method: "POST",
+     body: JSON.stringify(data)
+   });
+    
+  alert("Message saved!");
+ });
