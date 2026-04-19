@@ -14,18 +14,16 @@ function toggleTheme(){
 }
 
 function setLanguage(lang) {
-  const sections = document.querySelectorAll(".lang");
-
-  // hide all languages
-  sections.forEach(sec => {
-    sec.style.display = "none";
+  // hide everything
+  document.querySelectorAll(".lang").forEach(el => {
+    el.style.display = "none";
   });
 
   // show selected language
-  const active = document.getElementById("content-" + lang);
-  if (active) active.style.display = "block";
+  document.querySelectorAll(".lang-" + lang).forEach(el => {
+    el.style.display = "block";
+  });
 
-  // save choice
   localStorage.setItem("lang", lang);
 }
 
