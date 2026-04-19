@@ -268,7 +268,8 @@ button:hover{
 /* ================ CONTACT BOX ==========================*/
 
 #contact-form {
-  width: 100%;
+  /*width: 100%;*/
+  max-width: 500px;
 }
 
 #contact-form input,
