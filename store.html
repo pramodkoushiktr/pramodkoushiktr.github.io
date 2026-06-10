@@ -1,0 +1,138 @@
+<body>
+
+<header>
+
+  <div class="navbar">
+
+    <div class="logo">
+      <img src="Polish_20260410_173106545.png" alt="Logo">
+    </div>
+         
+    <nav>
+      <a href="index.html">BLOG</a>
+      <a href="books.html">BOOKS</a>
+      <a href="tech.html">TECH</a>
+      <a href="dheenava.html">DHEENAVA</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html" class="active">CONTACT</a>
+    </nav>
+
+    <div class="theme-switch" onclick="toggleTheme()">
+      <div class="switch-track">
+        <div class="switch-thumb" id="themeIcon">☀︎</div>
+      </div>
+    </div>
+
+  </div>
+
+</header>
+
+<!-- ================= PRODUCTS SECTION ================= -->
+
+<div class="container">
+
+  <div class="product-grid">
+
+    <div class="product-item">
+      <img src="book1.jpg" alt="Product 1">
+      <a href="https://www.amazon.in/" target="_blank">
+        Product Name 1
+      </a>
+    </div>
+
+    <div class="product-item">
+      <img src="book2.jpg" alt="Product 2">
+      <a href="https://www.amazon.in/" target="_blank">
+        Product Name 2
+      </a>
+    </div>
+
+    <div class="product-item">
+      <img src="book3.jpg" alt="Product 3">
+      <a href="https://www.amazon.in/" target="_blank">
+        Product Name 3
+      </a>
+    </div>
+
+    <div class="product-item">
+      <img src="book4.jpg" alt="Product 4">
+      <a href="https://www.amazon.in/" target="_blank">
+        Product Name 4
+      </a>
+    </div>
+
+    <div class="product-item">
+      <img src="book5.jpg" alt="Product 5">
+      <a href="https://www.amazon.in/" target="_blank">
+        Product Name 5
+      </a>
+    </div>
+
+    <div class="product-item">
+      <img src="book6.jpg" alt="Product 6">
+      <a href="https://www.amazon.in/" target="_blank">
+        Product Name 6
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+
+.container{
+  width: 90%;
+  margin: auto;
+  padding: 30px 0;
+}
+
+.product-grid{
+  display: grid;
+
+  /* Constant items in each row */
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 30px;
+}
+
+.product-item{
+  text-align: center;
+}
+
+.product-item img{
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.product-item a{
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.product-item a:hover{
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media(max-width: 900px){
+  .product-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 500px){
+  .product-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+
+</body>
