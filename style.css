@@ -371,17 +371,20 @@ button:hover{
 /* ================= PRODUCT PAGE ================= */
 
 .product-container{
-  width:90%;
-  max-width:1400px;
+  width:95%;
+  max-width:1600px;
   margin:auto;
   padding:40px 20px;
 
   display:grid;
 
-  /* constant items in row */
-  grid-template-columns:repeat(4, 1fr);
+  /* Always 5 equal reserved places */
+  grid-template-columns:repeat(5, minmax(0, 1fr));
 
-  gap:30px;
+  gap:25px;
+
+  /* prevents stretching */
+  align-items:start;
 }
 
 .product-item{
@@ -390,6 +393,10 @@ button:hover{
   padding:15px;
   text-align:center;
   transition:transform 0.3s ease;
+
+  /* keeps same size */
+  width:100%;
+  box-sizing:border-box;
 }
 
 .product-item:hover{
@@ -409,8 +416,7 @@ button:hover{
   margin-top:14px;
   color:var(--text);
   text-decoration:none;
-  font-size:1.1rem;
-  transition:0.2s ease;
+  font-size:1rem;
 }
 
 .product-item a:hover{
@@ -419,10 +425,9 @@ button:hover{
 
 /* ================= TABLET ================= */
 
-@media (max-width:900px){
+@media (max-width:1000px){
   .product-container{
-    grid-template-columns:repeat(2, 1fr);
-    gap:20px;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -430,13 +435,7 @@ button:hover{
 
 @media (max-width:600px){
   .product-container{
-    grid-template-columns:1fr;
-    width:95%;
-    padding:20px 10px;
-  }
-
-  .product-item{
-    padding:12px;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:15px;
   }
 }
-
