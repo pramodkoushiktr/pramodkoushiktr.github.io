@@ -379,9 +379,9 @@ button:hover{
   display:grid;
 
   /* Always 5 equal reserved places */
-  grid-template-columns:repeat(5, minmax(0, 1fr));
+  grid-template-columns:repeat(4, minmax(0, 1fr));
 
-  gap:25px;
+  gap:30px;
 
   /* prevents stretching */
   align-items:start;
@@ -390,7 +390,7 @@ button:hover{
 .product-item{
   background:var(--card);
   border-radius:12px;
-  padding:15px;
+  padding:20px;
   text-align:center;
   transition:transform 0.3s ease;
 
