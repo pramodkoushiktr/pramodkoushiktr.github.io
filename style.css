@@ -371,98 +371,97 @@ button:hover{
 /* ================= PRODUCT PAGE ================= */
 
 .product-container{
-  width:95%;
+  width:92%;
   max-width:1600px;
   margin:auto;
-  padding:50px 20px;
+  padding:60px 20px;
 
   display:grid;
-  grid-template-columns:repeat(4, minmax(0, 1fr));
-  gap:35px;
-
-  align-items:start;
+  grid-template-columns:repeat(4, 1fr);
+  gap:32px;
 }
 
-/* ================= PRODUCT CARD ================= */
+/* ================= PREMIUM PRODUCT CARD ================= */
 
 .product-item{
   background:var(--card);
-  border-radius:20px;
-  padding:22px;
-  text-align:center;
+  border-radius:24px;
+
+  /* SAME SIZE FOR ALL ITEMS */
+  aspect-ratio:1/1;
+
+  padding:24px;
   box-sizing:border-box;
 
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-/* Premium hover feel */
-.product-item:hover{
-  transform:translateY(-6px);
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-}
-
-/* ================= SQUARE IMAGE AREA ================= */
-
-.product-item .product-image-box{
-  width:100%;
-  aspect-ratio:1/1;   /* Perfect square */
-  background:#f8f8f8;
-  border-radius:16px;
-
-  display:flex;
-  justify-content:center;
   align-items:center;
 
-  padding:20px;
+  position:relative;
   overflow:hidden;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+
+  border:1px solid rgba(255,255,255,0.08);
 }
 
-/* Center image/object */
+/* Luxury hover feel */
+.product-item:hover{
+  transform:translateY(-8px);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.08);
+}
+
+/* ================= IMAGE AREA ================= */
+
 .product-item img{
-  max-width:85%;
-  max-height:85%;
-  object-fit:contain;
+  width:100%;
+  height:70%;
+
+  object-fit:contain; /* keeps full object visible */
   display:block;
 
-  transition:transform 0.3s ease;
+  margin:auto;
+  transition:transform 0.4s ease;
 }
 
+/* Slight premium zoom */
 .product-item:hover img{
-  transform:scale(1.04);
+  transform:scale(1.05);
 }
 
-/* ================= PRODUCT NAME / LINK ================= */
+/* ================= PRODUCT NAME ================= */
 
 .product-item a{
-  display:block;
-  margin-top:20px;
-  color:var(--text);
   text-decoration:none;
+  color:var(--text);
 
   font-size:1rem;
   font-weight:500;
+  letter-spacing:0.3px;
   line-height:1.5;
 
-  padding:0 10px;
-  transition:0.2s ease;
+  text-align:center;
+
+  width:100%;
+  padding-top:14px;
+
+  transition:0.25s ease;
 }
 
 .product-item a:hover{
-  font-weight:700;
+  opacity:0.8;
 }
 
 /* ================= TABLET ================= */
 
 @media (max-width:1000px){
   .product-container{
-    grid-template-columns:repeat(3, minmax(0, 1fr));
-    gap:25px;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
   }
 }
 
@@ -470,18 +469,18 @@ button:hover{
 
 @media (max-width:600px){
   .product-container{
-    grid-template-columns:repeat(2, minmax(0, 1fr));
+    grid-template-columns:repeat(2, 1fr);
     gap:18px;
-    padding:30px 12px;
+    width:95%;
+    padding:30px 10px;
   }
 
   .product-item{
-    padding:16px;
-    border-radius:16px;
+    border-radius:18px;
+    padding:18px;
   }
 
   .product-item a{
-    font-size:0.95rem;
-    margin-top:14px;
+    font-size:0.92rem;
   }
 }
