@@ -374,30 +374,32 @@ button:hover{
   width:88%;
   max-width:1500px;
   margin:auto;
-  padding:90px 20px;
+  padding:100px 20px;
 
   display:flex;
   flex-direction:column;
-  gap:28px;
+
+  /* curated luxury spacing */
+  gap:36px;
 }
 
 /* ================= PRODUCT WINDOW ================= */
 
 .product-item{
   background:var(--card);
-  border-radius:32px;
+  border-radius:36px;
 
-  /* luxury spacing */
-  padding:44px 48px;
+  /* luxurious breathing room */
+  padding:48px 54px;
 
   display:grid;
   grid-template-columns:
-    320px      /* image */
+    340px      /* image */
     1fr        /* description */
     180px;     /* link */
 
   align-items:center;
-  gap:50px;
+  gap:58px;
 
   box-sizing:border-box;
 
@@ -405,19 +407,19 @@ button:hover{
     transform 0.35s ease,
     box-shadow 0.35s ease;
 
-  /* subtle premium depth */
+  /* softer premium depth */
   box-shadow:
-    0 3px 10px rgba(0,0,0,0.03),
-    0 18px 40px rgba(0,0,0,0.04);
+    0 2px 8px rgba(0,0,0,0.025),
+    0 14px 36px rgba(0,0,0,0.04);
 }
 
-/* elegant hover */
+/* Elegant luxury hover */
 .product-item:hover{
-  transform:translateY(-4px);
+  transform:translateY(-2px);
 
   box-shadow:
-    0 10px 28px rgba(0,0,0,0.05),
-    0 28px 50px rgba(0,0,0,0.07);
+    0 10px 24px rgba(0,0,0,0.04),
+    0 22px 46px rgba(0,0,0,0.06);
 }
 
 /* ================= IMAGE SECTION ================= */
@@ -426,12 +428,15 @@ button:hover{
   display:flex;
   justify-content:center;
   align-items:center;
+
+  /* more luxury breathing room */
+  padding:28px;
 }
 
 .product-image img{
   width:100%;
-  max-width:260px;
-  max-height:240px;
+  max-width:250px;
+  max-height:220px;
 
   object-fit:contain;
   display:block;
@@ -440,7 +445,7 @@ button:hover{
 }
 
 .product-item:hover img{
-  transform:scale(1.03);
+  transform:scale(1.02);
 }
 
 /* ================= DESCRIPTION ================= */
@@ -452,16 +457,18 @@ button:hover{
 }
 
 .product-content h3{
-  margin:0 0 14px;
+  margin:0 0 16px;
 
   font-family:
     "Inter",
     "SF Pro Display",
+    "Helvetica Neue",
     sans-serif;
 
-  font-size:1.35rem;
+  font-size:1.4rem;
   font-weight:600;
-  letter-spacing:-0.2px;
+  letter-spacing:-0.3px;
+  line-height:1.3;
 
   color:var(--text);
 }
@@ -471,6 +478,7 @@ button:hover{
 
   font-family:
     "Inter",
+    "Helvetica Neue",
     sans-serif;
 
   font-size:1rem;
@@ -485,6 +493,10 @@ button:hover{
   display:flex;
   justify-content:flex-end;
   align-items:center;
+
+  /* elegant separator */
+  border-left:1px solid rgba(0,0,0,0.08);
+  padding-left:34px;
 }
 
 .product-link a{
@@ -493,11 +505,12 @@ button:hover{
   font-family:
     "Inter",
     "SF Pro Display",
+    "Helvetica Neue",
     sans-serif;
 
   font-size:1rem;
   font-weight:600;
-  letter-spacing:0.3px;
+  letter-spacing:0.25px;
 
   color:var(--text);
 
@@ -527,38 +540,72 @@ button:hover{
 
 @media (max-width:1000px){
   .product-item{
-    grid-template-columns:220px 1fr;
-    gap:35px;
+    grid-template-columns:240px 1fr;
+    gap:40px;
+
+    padding:40px;
   }
 
   .product-link{
     grid-column:1 / -1;
+
     justify-content:flex-start;
-    padding-left:8px;
-    margin-top:10px;
+
+    border-left:none;
+    border-top:1px solid rgba(0,0,0,0.08);
+
+    padding-left:0;
+    padding-top:22px;
+    margin-top:6px;
+  }
+
+  .product-image img{
+    max-width:200px;
   }
 }
 
 /* ================= MOBILE ================= */
 
 @media (max-width:700px){
+  .product-container{
+    width:94%;
+    padding:50px 10px;
+    gap:24px;
+  }
+
   .product-item{
     grid-template-columns:1fr;
     text-align:center;
 
-    padding:32px 26px;
+    padding:34px 26px;
     gap:28px;
+
+    border-radius:30px;
   }
 
   .product-image{
-    justify-content:center;
+    padding:14px;
+  }
+
+  .product-image img{
+    max-width:180px;
+    max-height:170px;
+  }
+
+  .product-content h3{
+    font-size:1.2rem;
+  }
+
+  .product-content p{
+    line-height:1.75;
   }
 
   .product-link{
     justify-content:center;
-  }
 
-  .product-content p{
-    line-height:1.7;
+    border-left:none;
+    border-top:1px solid rgba(0,0,0,0.08);
+
+    padding-top:20px;
   }
 }
