@@ -374,88 +374,122 @@ button:hover{
   width:92%;
   max-width:1600px;
   margin:auto;
-  padding:60px 20px;
+  padding:80px 20px;
 
-  column-count:4;
-  column-gap:28px;
+  display:grid;
+
+  /* flexible sticky-note layout */
+  grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+
+  gap:34px;
+
+  /* removes awkward gaps */
+  grid-auto-flow:dense;
+
+  /* base row size */
+  grid-auto-rows:12px;
 }
 
-/* ================= PRODUCT CARD ================= */
+/* ================= PREMIUM CARD ================= */
 
 .product-item{
   background:var(--card);
-  border-radius:22px;
+  border-radius:26px;
 
-  padding:22px;
-  margin-bottom:28px;
+  /* more luxurious inner spacing */
+  padding:34px 30px;
 
-  break-inside:avoid;
   overflow:hidden;
   box-sizing:border-box;
 
-  text-align:center;
+  position:relative;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
 
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease;
+
+  /* soft luxury depth */
+  box-shadow:
+    0 2px 12px rgba(0,0,0,0.03),
+    0 10px 28px rgba(0,0,0,0.04);
+
+  min-height:320px;
+}
+
+/* Sticky-note scattered sizes */
+.product-item:nth-child(3n){
+  grid-row:span 34;
+}
+
+.product-item:nth-child(4n){
+  grid-row:span 30;
+}
+
+.product-item:nth-child(5n){
+  grid-row:span 38;
+}
+
+.product-item:nth-child(7n){
+  grid-column:span 2;
 }
 
 /* Premium hover */
 .product-item:hover{
-  transform:translateY(-6px);
+  transform:translateY(-8px);
 
   box-shadow:
-    0 10px 30px rgba(0,0,0,0.08);
+    0 18px 45px rgba(0,0,0,0.08);
 }
 
 /* ================= IMAGE ================= */
 
 .product-item img{
   width:100%;
-  height:auto;
-  max-height:420px;
-
+  max-height:300px;
   object-fit:contain;
+
   display:block;
-
   margin:auto;
-  border-radius:14px;
 
-  transition:transform 0.4s ease;
+  transition:transform 0.45s ease;
 }
 
-/* subtle premium movement */
 .product-item:hover img{
-  transform:scale(1.03);
+  transform:scale(1.04);
 }
 
 /* ================= PRODUCT LINK ================= */
 
 .product-item a{
   display:block;
-  margin-top:18px;
+  margin-top:26px;
 
-  color:var(--text);
   text-decoration:none;
+  color:var(--text);
 
   font-size:1rem;
   font-weight:500;
+  line-height:1.6;
   letter-spacing:0.3px;
-  line-height:1.5;
 
-  transition:0.25s ease;
-}
-
-.product-item a:hover{
-  opacity:0.8;
+  text-align:center;
 }
 
 /* ================= TABLET ================= */
 
 @media (max-width:1000px){
   .product-container{
-    column-count:3;
-    column-gap:22px;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+
+  .product-item:nth-child(7n){
+    grid-column:span 1;
   }
 }
 
@@ -463,19 +497,18 @@ button:hover{
 
 @media (max-width:600px){
   .product-container{
-    column-count:2;
-    column-gap:16px;
-    width:95%;
-    padding:30px 10px;
+    grid-template-columns:repeat(2, 1fr);
+    gap:18px;
+    padding:40px 10px;
   }
 
   .product-item{
-    border-radius:18px;
-    padding:16px;
-    margin-bottom:16px;
+    padding:24px 20px;
+    border-radius:20px;
+    min-height:250px;
   }
 
-  .product-item a{
-    font-size:0.92rem;
+  .product-item:nth-child(7n){
+    grid-column:span 1;
   }
 }
