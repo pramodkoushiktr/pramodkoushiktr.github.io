@@ -2,18 +2,20 @@
 
 :root{
   --bg:#000000;
-  --card:#0a0a0a;
+  --card:#181818;
   --text:#ffffff;
-  --muted:#888888;
+  --muted:#9a9a9a;
 }
 
 /* LIGHT MODE */
+
 body.light{
   --bg:#ffffff;
-  --card:#f5f5f5;
-  --text:#000000;
-  --muted:#555555;
+  --card:#f7f7f7;
+  --text:#111111;
+  --muted:#666666;
 }
+
 
 /* ================= GLOBAL TEXT SIZE ================= */
 
