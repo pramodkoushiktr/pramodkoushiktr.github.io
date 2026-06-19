@@ -27,9 +27,9 @@ html{
 
 body{
   margin:0;
-  font-family: 'Patrick Hand', cursive;
-  font-weight:300;
-  letter-spacing:0.3px;
+  font-family:'Plus Jakarta Sans', sans-serif;
+  font-weight:400;
+  letter-spacing:0.2px;
   background:var(--bg);
   color:var(--text);
 }
@@ -461,11 +461,7 @@ button:hover{
 .product-content h3{
   margin:0 0 16px;
 
-  font-family:
-    "Inter",
-    "SF Pro Display",
-    "Helvetica Neue",
-    sans-serif;
+  font-family:'Plus Jakarta Sans', sans-serif;
 
   font-size:1.4rem;
   font-weight:600;
@@ -478,10 +474,7 @@ button:hover{
 .product-content p{
   margin:0;
 
-  font-family:
-    "Inter",
-    "Helvetica Neue",
-    sans-serif;
+  font-family:'Plus Jakarta Sans', sans-serif;
 
   font-size:1rem;
   line-height:1.9;
@@ -504,11 +497,7 @@ button:hover{
 .product-link a{
   text-decoration:none;
 
-  font-family:
-    "Inter",
-    "SF Pro Display",
-    "Helvetica Neue",
-    sans-serif;
+  font-family:'Plus Jakarta Sans', sans-serif;
 
   font-size:1rem;
   font-weight:600;
