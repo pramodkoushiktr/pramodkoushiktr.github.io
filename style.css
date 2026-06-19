@@ -29,7 +29,7 @@ body{
   margin:0;
   font-family:'Plus Jakarta Sans', sans-serif;
   font-weight:400;
-  letter-spacing:0.2px;
+  letter-spacing:0;
   background:var(--bg);
   color:var(--text);
 }
@@ -166,7 +166,6 @@ button:hover{
   padding:40px;
   display:grid;
   gap:20px;
-  text-align:justify;
 }
 
 .normal-image,
