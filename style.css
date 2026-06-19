@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 /* ================= ROOT COLORS ================= */
 
 :root{
   --bg:#000000;
   --card:#181818;
-  --text:#ffffff;
-  --muted:#9a9a9a;
+  --text:#ececec;
+  --muted:#8f8f8f;
 }
 
 /* LIGHT MODE */
@@ -27,11 +28,12 @@ html{
 
 body{
   margin:0;
-  font-family:'Plus Jakarta Sans', sans-serif;
+  font-family:'Inter', sans-serif;
   font-weight:400;
   letter-spacing:0;
   background:var(--bg);
   color:var(--text);
+  line-height:1.65;
 }
 
 /* ================= HEADER ================= */
@@ -53,6 +55,10 @@ header a{
   color:#ffffff !important;
 }
 
+h1,h2,h3,h4,h5,h6,
+nav a{
+  font-family:'Manrope', sans-serif;
+}
 /* ================= NAVBAR ================= */
 
 .navbar{
@@ -228,7 +234,7 @@ button:hover{
 
 @media (min-width:900px){
   .container{
-    grid-template-columns:1fr 1.8fr 1.2fr;
+    grid-template-columns:1.15fr 1.8fr 1.15fr;
   }
 }
 
