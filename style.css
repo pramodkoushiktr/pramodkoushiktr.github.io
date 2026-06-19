@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 /* ================= ROOT COLORS ================= */
 
 :root{
   --bg:#000000;
   --card:#181818;
-  --text:#ececec;
-  --muted:#8f8f8f;
+  --text:#ffffff;
+  --muted:#9a9a9a;
 }
 
 /* LIGHT MODE */
@@ -28,12 +27,11 @@ html{
 
 body{
   margin:0;
-  font-family:'Inter', sans-serif;
-  font-weight:400;
-  letter-spacing:0;
+  font-family: 'Patrick Hand', cursive;
+  font-weight:300;
+  letter-spacing:0.3px;
   background:var(--bg);
   color:var(--text);
-  line-height:1.65;
 }
 
 /* ================= HEADER ================= */
@@ -55,10 +53,6 @@ header a{
   color:#ffffff !important;
 }
 
-h1,h2,h3,h4,h5,h6,
-nav a{
-  font-family:'Manrope', sans-serif;
-}
 /* ================= NAVBAR ================= */
 
 .navbar{
@@ -172,6 +166,7 @@ button:hover{
   padding:40px;
   display:grid;
   gap:20px;
+  text-align:justify;
 }
 
 .normal-image,
@@ -234,7 +229,7 @@ button:hover{
 
 @media (min-width:900px){
   .container{
-    grid-template-columns:1.15fr 1.8fr 1.15fr;
+    grid-template-columns:1fr 1.8fr 1.2fr;
   }
 }
 
@@ -466,7 +461,11 @@ button:hover{
 .product-content h3{
   margin:0 0 16px;
 
-  font-family:'Plus Jakarta Sans', sans-serif;
+  font-family:
+    "Inter",
+    "SF Pro Display",
+    "Helvetica Neue",
+    sans-serif;
 
   font-size:1.4rem;
   font-weight:600;
@@ -479,7 +478,10 @@ button:hover{
 .product-content p{
   margin:0;
 
-  font-family:'Plus Jakarta Sans', sans-serif;
+  font-family:
+    "Inter",
+    "Helvetica Neue",
+    sans-serif;
 
   font-size:1rem;
   line-height:1.9;
@@ -502,7 +504,11 @@ button:hover{
 .product-link a{
   text-decoration:none;
 
-  font-family:'Plus Jakarta Sans', sans-serif;
+  font-family:
+    "Inter",
+    "SF Pro Display",
+    "Helvetica Neue",
+    sans-serif;
 
   font-size:1rem;
   font-weight:600;
@@ -604,217 +610,4 @@ button:hover{
 
     padding-top:20px;
   }
-}
-
-
-/* =========================
-   COURSE CARD
-========================= */
-
-.course-card{
-    background: var(--card);
-    border-radius: 35px;
-    padding: 35px;
-    margin-bottom: 40px;
-    overflow: hidden;
-}
-
-/* =========================
-   PLAYLIST SCROLLER
-========================= */
-
-.playlist-scroll{
-    display: flex;
-    gap: 20px;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    scroll-behavior: smooth;
-    padding-bottom: 12px;
-}
-
-.playlist-scroll iframe{
-    flex: 0 0 420px;
-
-    width: 420px;
-    aspect-ratio: 16/9;
-
-    border: none;
-    border-radius: 15px;
-
-    background: #000;
-}
-
-/* Scrollbar */
-
-.playlist-scroll::-webkit-scrollbar{
-    height: 8px;
-}
-
-.playlist-scroll::-webkit-scrollbar-track{
-    background: transparent;
-}
-
-.playlist-scroll::-webkit-scrollbar-thumb{
-    background: #444;
-    border-radius: 20px;
-}
-
-.playlist-scroll::-webkit-scrollbar-thumb:hover{
-    background: #666;
-}
-
-/* =========================
-   CONTENT AREA
-========================= */
-
-.course-info{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-
-    gap: 40px;
-
-    margin-top: 25px;
-}
-
-.course-text{
-    flex: 1;
-}
-
-.course-text h3{
-    margin: 0 0 15px 0;
-
-    font-size: 2rem;
-    font-weight: 700;
-
-    color: var(--text);
-}
-
-.course-text p{
-    margin: 0;
-
-    line-height: 1.8;
-    color: var(--muted);
-
-    font-size: 1rem;
-}
-
-/* =========================
-   PRICE SECTION
-========================= */
-
-.course-price{
-    min-width: 160px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    text-align: right;
-}
-
-.course-price a{
-    text-decoration: none;
-    color: var(--text);
-
-    font-size: 1.3rem;
-    font-weight: 700;
-
-    transition: opacity .3s ease;
-}
-
-.course-price a:hover{
-    opacity: 0.7;
-}
-
-/* =========================
-   TABLET
-========================= */
-
-@media (max-width: 1024px){
-
-    .course-card{
-        padding: 28px;
-    }
-
-    .playlist-scroll iframe{
-        flex: 0 0 340px;
-        width: 340px;
-    }
-
-    .course-text h3{
-        font-size: 1.7rem;
-    }
-
-    .course-price{
-        min-width: 130px;
-    }
-
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 768px){
-
-    .course-card{
-        padding: 22px;
-        border-radius: 25px;
-    }
-
-    .playlist-scroll{
-        gap: 15px;
-    }
-
-    .playlist-scroll iframe{
-        flex: 0 0 280px;
-        width: 280px;
-    }
-
-    .course-info{
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .course-price{
-        width: 100%;
-        min-width: auto;
-
-        flex-direction: row;
-        justify-content: flex-start;
-
-        gap: 25px;
-
-        text-align: left;
-    }
-
-    .course-price a{
-        font-size: 1.1rem;
-    }
-
-    .course-text h3{
-        font-size: 1.35rem;
-    }
-
-}
-
-/* =========================
-   SMALL MOBILE
-========================= */
-
-@media (max-width: 480px){
-
-    .playlist-scroll iframe{
-        flex: 0 0 240px;
-        width: 240px;
-    }
-
-    .course-text p{
-        line-height: 1.7;
-        font-size: 0.95rem;
-    }
-
 }
