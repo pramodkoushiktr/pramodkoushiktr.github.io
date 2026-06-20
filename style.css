@@ -460,13 +460,6 @@ button:hover{
 
 .product-content h3{
   margin:0 0 16px;
-
-  font-family:
-    "Inter",
-    "SF Pro Display",
-    "Helvetica Neue",
-    sans-serif;
-
   font-size:1.4rem;
   font-weight:600;
   letter-spacing:-0.3px;
@@ -477,12 +470,6 @@ button:hover{
 
 .product-content p{
   margin:0;
-
-  font-family:
-    "Inter",
-    "Helvetica Neue",
-    sans-serif;
-
   font-size:1rem;
   line-height:1.9;
 
@@ -503,13 +490,6 @@ button:hover{
 
 .product-link a{
   text-decoration:none;
-
-  font-family:
-    "Inter",
-    "SF Pro Display",
-    "Helvetica Neue",
-    sans-serif;
-
   font-size:1rem;
   font-weight:600;
   letter-spacing:0.25px;
