@@ -804,3 +804,132 @@ button:hover{
     }
 
 }
+
+
+/* =========================
+   LEARNING BLUEPRINT
+========================= */
+
+.blueprint-section{
+    width:88%;
+    max-width:1200px;
+    margin:auto;
+    padding:100px 20px;
+}
+
+.blueprint-header{
+    margin-bottom:50px;
+}
+
+.blueprint-header h2{
+    margin:0 0 16px;
+
+    font-size:2.2rem;
+    font-weight:600;
+
+    color:var(--text);
+}
+
+.blueprint-header p{
+    margin:0;
+
+    max-width:700px;
+
+    line-height:1.9;
+    color:var(--muted);
+}
+
+.blueprint-list{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.blueprint-item{
+    text-decoration:none;
+    color:inherit;
+
+    background:var(--card);
+
+    border-radius:30px;
+
+    padding:32px 38px;
+
+    display:grid;
+    grid-template-columns:90px 1fr 40px;
+    align-items:center;
+    gap:25px;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.025),
+        0 14px 36px rgba(0,0,0,0.04);
+}
+
+.blueprint-item:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 10px 24px rgba(0,0,0,0.04),
+        0 22px 46px rgba(0,0,0,0.06);
+}
+
+.blueprint-number{
+    font-size:1.8rem;
+    font-weight:300;
+
+    color:var(--muted);
+}
+
+.blueprint-content h3{
+    margin:0 0 8px;
+
+    font-size:1.25rem;
+    font-weight:600;
+
+    color:var(--text);
+}
+
+.blueprint-content p{
+    margin:0;
+
+    line-height:1.8;
+    color:var(--muted);
+}
+
+.blueprint-arrow{
+    font-size:1.4rem;
+    color:var(--text);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    .blueprint-section{
+        width:94%;
+        padding:60px 10px;
+    }
+
+    .blueprint-item{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .blueprint-arrow{
+        display:none;
+    }
+
+    .blueprint-number{
+        font-size:1.3rem;
+    }
+
+    .blueprint-header h2{
+        font-size:1.8rem;
+    }
+}
