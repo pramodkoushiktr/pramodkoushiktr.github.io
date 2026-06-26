@@ -811,8 +811,8 @@ button:hover{
 ========================= */
 
 .blueprint-section{
-    width:100%;
-    
+    width:88%;
+    max-width:1200px;
     margin:auto;
     padding:100px 20px;
 }
@@ -832,8 +832,6 @@ button:hover{
 
 .blueprint-header p{
     margin:0;
-
-    max-width:700px;
 
     line-height:1.9;
     color:var(--muted);
