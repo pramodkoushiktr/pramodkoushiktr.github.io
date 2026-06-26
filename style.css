@@ -832,7 +832,7 @@ button:hover{
 
 .blueprint-header p{
     margin:0;
-    
+    text-align:justify;
     line-height:1.9;
     color:var(--muted);
 }
