@@ -632,6 +632,21 @@ button:hover{
     background: #000;
 }
 
+.playlist-scroll img{
+  width:100%;
+  max-width:250px;
+  max-height:220px;
+
+  object-fit:contain;
+  display:block;
+
+  transition:transform 0.35s ease;
+}
+
+.playlist-scroll:hover img{
+  transform:scale(1.02);
+}
+
 /* Scrollbar */
 
 .playlist-scroll::-webkit-scrollbar{
@@ -730,6 +745,10 @@ button:hover{
         width: 340px;
     }
 
+    .playlist-scroll img{
+        max-width:200px;
+    }
+
     .course-text h3{
         font-size: 1.7rem;
     }
@@ -758,6 +777,11 @@ button:hover{
     .playlist-scroll iframe{
         flex: 0 0 280px;
         width: 280px;
+    }
+
+    .playlist-scroll img{
+        max-width:180px;
+        max-height:170px;
     }
 
     .course-info{
