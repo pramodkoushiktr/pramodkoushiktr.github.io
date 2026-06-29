@@ -47,12 +47,12 @@ window.onload = function () {
   setLanguage(defaultLang);
 
   /* ===== LOAD BOOKS ===== */
-  loadBooks(2028, 8, "books-2026");
-  loadBooks(2027, 8, "books-2025");
+  loadBooks(2028, 8, "books-2028");
+  loadBooks(2027, 8, "books-2027");
   loadBooks(2026, 8, "books-2026");
   loadBooks(2025, 8, "books-2025");
-  loadBooks(2024, 8, "books-2026");
-  loadBooks(2019, 8, "books-2025");
+  loadBooks(2024, 8, "books-2024");
+  loadBooks(2019, 8, "books-2019");
 };
 
 
