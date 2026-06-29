@@ -45,6 +45,14 @@ window.onload = function () {
   /* ===== LANGUAGE RESTORE ===== */
   const defaultLang = savedLang || "en";
   setLanguage(defaultLang);
+
+  /* ===== LOAD BOOKS ===== */
+  loadBooks(2028, 8, "books-2026");
+  loadBooks(2027, 8, "books-2025");
+  loadBooks(2026, 8, "books-2026");
+  loadBooks(2025, 8, "books-2025");
+  loadBooks(2024, 8, "books-2026");
+  loadBooks(2019, 8, "books-2025");
 };
 
 
