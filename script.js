@@ -77,9 +77,9 @@ async function loadBooks(year, minRating, containerId) {
         )
         .forEach(book => {
 
-            const div = document.createElement("div");
+            const div = document.createElement("li");
             div.textContent = `${book.book_name} | ${book.author}`;
-            container.appendChild(div);
+            container.appendChild(li);
 
         });
 }
