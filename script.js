@@ -51,14 +51,15 @@ window.onload = function () {
 
 
 
-async function loadBooks(year, minRating) {
+
+async function loadBooks(year, minRating, containerId) {
 
     const url = "https://script.google.com/macros/s/AKfycbztcRGkNZt2sVgnq6CnmrvpGZrzbNdNrb68rkHuTrpOVG2ZGZxiZxIXvjlqHW3e19PwHg/exec";
 
     const response = await fetch(url);
     const books = await response.json();
 
-    const container = document.getElementById("book-list");
+    const container = document.getElementById(containerId);
     container.innerHTML = "";
 
     books
