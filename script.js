@@ -67,7 +67,7 @@ async function fetchBooks() {
 
 function displayBooks() {
 
-    const years = [2028, 2027, 2026, 2025, 2024, 2019];
+    const years = [ 2026, 2025, 2024, 2019];
 
     years.forEach(year => {
 
