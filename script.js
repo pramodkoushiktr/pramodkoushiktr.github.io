@@ -48,14 +48,7 @@ window.onload = async function () {
 
   /* ===== LOAD BOOKS ===== */
   await fetchBooks();
-  loadBooks(2028, 8, "books-2028");
-  loadBooks(2027, 8, "books-2027");
-  loadBooks(2026, 8, "books-2026");
-  loadBooks(2025, 8, "books-2025");
-  loadBooks(2024, 8, "books-2024");
-  loadBooks(2019, 8, "books-2019");
 };
-
 
 
 
@@ -67,23 +60,30 @@ async function fetchBooks() {
 
     const response = await fetch(url);
     allBooks = await response.json();
+
+    displayBooks();
 }
 
-function loadBooks(year, minRating, containerId) {
+function displayBooks() {
 
-    const container = document.getElementById(containerId);
-    container.innerHTML = "";
+    const years = [2028, 2027, 2026, 2025, 2024, 2019];
 
-    allBooks
-        .filter(book =>
-            Number(book.read_year) === year &&
-            Number(book.rating) >= minRating
-        )
-        .forEach(book => {
+    years.forEach(year => {
 
-            const div = document.createElement("div");
-            div.textContent = `• ${book.book_name} | ${book.author}`;
-            container.appendChild(div);
+        const container = document.getElementById(`books-${year}`);
+        container.innerHTML = "";
 
-        });
+        const html = allBooks
+            .filter(book =>
+                Number(book.read_year) === year &&
+                Number(book.rating) >= 8
+            )
+            .map(book =>
+                `<div>• ${book.book_name} | ${book.author}</div>`
+            )
+            .join("");
+
+        container.innerHTML = html;
+    });
+
 }
