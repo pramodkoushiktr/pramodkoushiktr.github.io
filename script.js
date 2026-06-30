@@ -28,7 +28,7 @@ function setLanguage(lang) {
 }
 
 /* ✅ SINGLE LOAD HANDLER (IMPORTANT FIX) */
-window.onload = function () {
+window.onload = async function () {
   const savedTheme = localStorage.getItem('theme');
   const savedLang = localStorage.getItem('lang');
   const icon = document.getElementById('themeIcon');
@@ -47,6 +47,7 @@ window.onload = function () {
   setLanguage(defaultLang);
 
   /* ===== LOAD BOOKS ===== */
+  await fetchBooks();
   loadBooks(2028, 8, "books-2028");
   loadBooks(2027, 8, "books-2027");
   loadBooks(2026, 8, "books-2026");
@@ -59,21 +60,24 @@ window.onload = function () {
 
 
 
+let allBooks = [];
 
-async function loadBooks(year, minRating, containerId) {
-
+async function fetchBooks() {
     const url = "https://script.google.com/macros/s/AKfycbztcRGkNZt2sVgnq6CnmrvpGZrzbNdNrb68rkHuTrpOVG2ZGZxiZxIXvjlqHW3e19PwHg/exec";
 
     const response = await fetch(url);
-    const books = await response.json();
+    allBooks = await response.json();
+}
+
+function loadBooks(year, minRating, containerId) {
 
     const container = document.getElementById(containerId);
     container.innerHTML = "";
 
-    books
+    allBooks
         .filter(book =>
-            book.read_year == year &&
-            book.rating >= minRating
+            Number(book.read_year) === year &&
+            Number(book.rating) >= minRating
         )
         .forEach(book => {
 
