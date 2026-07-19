@@ -91,3 +91,243 @@ function displayBooks() {
 
 
 
+
+// =========================
+// GOOGLE APPS SCRIPT URL
+// =========================
+
+const API_URL = "PASTE_YOUR_WEBAPP_URL_HERE";
+
+
+// =========================
+// SESSION
+// =========================
+
+let currentCourse = "";
+let currentCourseName = "";
+let currentCourseLink = "";
+
+
+// =========================
+// BUY NOW
+// =========================
+
+function buyCourse(courseId){
+
+    currentCourse = courseId;
+
+    document.getElementById("currentCourseId").value = courseId;
+
+    if(sessionStorage.getItem("studentId")==null){
+
+        openLogin();
+
+        return;
+
+    }
+
+    checkPurchase();
+
+}
+
+
+
+// =========================
+// POPUPS
+// =========================
+
+function openPopup(id){
+
+    document.getElementById(id).style.display="flex";
+
+}
+
+function closePopup(id){
+
+    document.getElementById(id).style.display="none";
+
+}
+
+function openLogin(){
+
+    closePopup("signupPopup");
+
+    openPopup("loginPopup");
+
+}
+
+function openSignup(){
+
+    closePopup("loginPopup");
+
+    openPopup("signupPopup");
+
+}
+
+
+
+// =========================
+// SIGNUP
+// =========================
+
+async function signupStudent(){
+
+    let name=document.getElementById("signupName").value.trim();
+
+    let email=document.getElementById("signupEmail").value.trim();
+
+    let password=document.getElementById("signupPassword").value.trim();
+
+    if(name=="" || email=="" || password==""){
+
+        alert("Fill all fields.");
+
+        return;
+
+    }
+
+    openPopup("loadingPopup");
+
+    const response=await fetch(API_URL,{
+
+        method:"POST",
+
+        body:JSON.stringify({
+
+            action:"signup",
+
+            name:name,
+
+            email:email,
+
+            password:password
+
+        })
+
+    });
+
+    const data=await response.json();
+
+    closePopup("loadingPopup");
+
+    if(data.status=="exists"){
+
+        alert("Email already registered.");
+
+        return;
+
+    }
+
+    sessionStorage.setItem("studentId",data.studentId);
+
+    sessionStorage.setItem("studentName",name);
+
+    sessionStorage.setItem("studentEmail",email);
+
+    document.getElementById("studentName").innerHTML=name;
+
+    document.getElementById("studentBar").style.display="block";
+
+    closePopup("signupPopup");
+
+    checkPurchase();
+
+}
+
+
+
+// =========================
+// LOGIN
+// =========================
+
+async function loginStudent(){
+
+    let email=document.getElementById("loginEmail").value.trim();
+
+    let password=document.getElementById("loginPassword").value.trim();
+
+    if(email=="" || password==""){
+
+        alert("Enter email and password.");
+
+        return;
+
+    }
+
+    openPopup("loadingPopup");
+
+    const response=await fetch(API_URL,{
+
+        method:"POST",
+
+        body:JSON.stringify({
+
+            action:"login",
+
+            email:email,
+
+            password:password
+
+        })
+
+    });
+
+    const data=await response.json();
+
+    closePopup("loadingPopup");
+
+    if(data.status!="success"){
+
+        alert("Wrong email or password.");
+
+        return;
+
+    }
+
+    sessionStorage.setItem("studentId",data.studentId);
+
+    sessionStorage.setItem("studentName",data.name);
+
+    sessionStorage.setItem("studentEmail",email);
+
+    document.getElementById("studentName").innerHTML=data.name;
+
+    document.getElementById("studentBar").style.display="block";
+
+    closePopup("loginPopup");
+
+    checkPurchase();
+
+}
+
+
+
+// =========================
+// LOGOUT
+// =========================
+
+function logoutStudent(){
+
+    sessionStorage.clear();
+
+    location.reload();
+
+}
+
+
+
+// =========================
+// PAGE LOAD
+// =========================
+
+window.onload=function(){
+
+    if(sessionStorage.getItem("studentId")!=null){
+
+        document.getElementById("studentBar").style.display="block";
+
+        document.getElementById("studentName").innerHTML=sessionStorage.getItem("studentName");
+
+    }
+
+}
