@@ -1,85 +1,412 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Store | Pramod Koushik T R</title>
 
 <link rel="icon" type="image/png" href="Polish_20250812_192925345.png">
+
 <link rel="stylesheet" href="style.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
+
 </head>
 
 <body>
 
 <header>
 
-  <div class="navbar">
+<div class="navbar">
 
-    <div class="logo">
-      <img src="Polish_20260410_173106545.png" alt="Logo">
-    </div>
+<div class="logo">
+<img src="Polish_20260410_173106545.png">
+</div>
 
-    <nav>
-      <a href="buy_books.html">BUY BOOKS</a>
-      <a href="buy_courses.html" class="active">BUY COURSES</a>
-    </nav>
+<nav>
+<a href="buy_books.html">BUY BOOKS</a>
+<a href="buy_courses.html" class="active">BUY COURSES</a>
+</nav>
 
-    <div class="theme-switch" onclick="toggleTheme()">
-      <div class="switch-track">
-        <div class="switch-thumb" id="themeIcon">☀︎</div>
-      </div>
-    </div>
+<div class="theme-switch" onclick="toggleTheme()">
+<div class="switch-track">
+<div class="switch-thumb" id="themeIcon">☀︎</div>
+</div>
+</div>
 
-  </div>
+</div>
 
 </header>
 
-<!-- ================= STORE PRODUCTS ================= -->
-
 <div class="product-container">
 
-  <div class="course-card">
-    <div class="playlist-scroll">
-      <a href="https://youtube.com/playlist?list=PLS0t3MqQxvfAMUpDyoI4BHRIrNhtFAXeV&si=8JVUCXXealxTzvoW"><img src="2_ytplaylist.png" alt="Logo"></a>
-      <a href="https://youtube.com/playlist?list=PLS0t3MqQxvfB4Td507i3wPaA8bb5PZN4-&si=Kco8eJczq-j8TwfS"><img src="1_ytplaylist.png" alt="Logo"></a>
+<div class="course-card">
 
-    </div>
-    <div class="course-info">
-        <div class="course-text">
-            <h3>Full Concepts | JEE Mathematics | eng/san/kan</h3>
-            <p>
-              A collection of JEE Mathematics concept videos where every chapter is explained with precision and efficiency in just 10–25 minutes.
-              <br>Built for aspirants who value deep understanding, not endless hours of study.
-              <br><br>Price: <s>₹7250.00</s> ₹10.00
-              <br>Validity: 12 Months
-            </p>
-        </div>
-        <div class="course-price">
-          <h3>BUY NOW</h3>
-        </div>
-    </div>
-  </div>
-  
-  <div class="course-card">
-    <div class="course-info">
-        <div class="course-text">
-            <h3>Problem Solving | JEE Mathematics | eng/san/kan</h3>
-            <p>
-              COMING SOON...
-              <br><br>Price: <s>₹3050.00</s> ₹0.00
-              <br>Validity: 12 Months
-            </p>
-        </div>
-        <div class="course-price">
-          <h3>BUY NOW</h3>
-        </div>
-    </div>
-  </div>
-    
+<div class="playlist-scroll">
+
+<a href="https://youtube.com/playlist?list=PLS0t3MqQxvfAMUpDyoI4BHRIrNhtFAXeV&si=8JVUCXXealxTzvoW">
+<img src="2_ytplaylist.png">
+</a>
+
+<a href="https://youtube.com/playlist?list=PLS0t3MqQxvfB4Td507i3wPaA8bb5PZN4-&si=Kco8eJczq-j8TwfS">
+<img src="1_ytplaylist.png">
+</a>
+
 </div>
 
+<div class="course-info">
+
+<div class="course-text">
+
+<h3>Full Concepts | JEE Mathematics | eng/san/kan</h3>
+
+<p>
+
+A collection of JEE Mathematics concept videos where every chapter is explained with precision and efficiency in just 10–25 minutes.
+
+<br><br>
+
+Price:
+<s>₹7250.00</s>
+₹10.00
+
+<br>
+
+Validity:
+12 Months
+
+</p>
+
+</div>
+
+<div class="course-price">
+
+<button onclick="buyCourse('COURSE001')">
+BUY NOW
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="course-card">
+
+<div class="course-info">
+
+<div class="course-text">
+
+<h3>Problem Solving | JEE Mathematics | eng/san/kan</h3>
+
+<p>
+
+COMING SOON...
+
+<br><br>
+
+Price:
+<s>₹3050.00</s>
+₹0.00
+
+<br>
+
+Validity:
+12 Months
+
+</p>
+
+</div>
+
+<div class="course-price">
+
+<button disabled>
+COMING SOON
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- LOGIN -->
+
+<div class="popup" id="loginPopup">
+
+<div class="popup-box">
+
+<span class="close" onclick="closePopup('loginPopup')">&times;</span>
+
+<h2>Student Login</h2>
+
+<input
+type="email"
+id="loginEmail"
+placeholder="Email">
+
+<input
+type="password"
+id="loginPassword"
+placeholder="Password">
+
+<button onclick="loginStudent()">
+LOGIN
+</button>
+
+<p>
+
+Don't have an account?
+
+<a href="#" onclick="openSignup()">
+
+Create Account
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+<!-- SIGNUP -->
+
+<div class="popup" id="signupPopup">
+
+<div class="popup-box">
+
+<span class="close" onclick="closePopup('signupPopup')">&times;</span>
+
+<h2>Create Account</h2>
+
+<input
+type="text"
+id="signupName"
+placeholder="Full Name">
+
+<input
+type="email"
+id="signupEmail"
+placeholder="Email">
+
+<input
+type="password"
+id="signupPassword"
+placeholder="Password">
+
+<button onclick="signupStudent()">
+CREATE ACCOUNT
+</button>
+
+<p>
+
+Already have an account?
+
+<a href="#" onclick="openLogin()">
+
+Login
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+<!-- QR PAYMENT -->
+
+<div class="popup" id="paymentPopup">
+
+<div class="popup-box">
+
+<span class="close" onclick="closePopup('paymentPopup')">&times;</span>
+
+<h2>Pay ₹10</h2>
+
+<img
+
+id="qrImage"
+
+src="YOUR_QR_IMAGE.png"
+
+style="width:220px;border-radius:10px;">
+
+<p>
+
+Scan the QR and complete the payment.
+
+</p>
+
+<input
+
+type="text"
+
+id="transactionId"
+
+placeholder="Enter UPI Transaction ID">
+
+<button onclick="submitTransaction()">
+
+SUBMIT
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SUCCESS POPUP -->
+
+<div class="popup" id="successPopup">
+
+<div class="popup-box">
+
+<h2>Payment Submitted</h2>
+
+<p>
+
+Thank you!
+
+<br><br>
+
+Your payment request has been received.
+
+<br><br>
+
+Your course will be activated within <b>24 hours</b> after verification.
+
+</p>
+
+<button onclick="closePopup('successPopup')">
+
+OK
+
+</button>
+
+</div>
+
+</div>
+
+<!-- PENDING POPUP -->
+
+<div class="popup" id="pendingPopup">
+
+<div class="popup-box">
+
+<h2>Verification Pending</h2>
+
+<p>
+
+We have already received your transaction details.
+
+<br><br>
+
+Please wait while we verify your payment.
+
+<br><br>
+
+Course activation usually takes less than 24 hours.
+
+</p>
+
+<button onclick="closePopup('pendingPopup')">
+
+OK
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ALREADY PURCHASED -->
+
+<div class="popup" id="approvedPopup">
+
+<div class="popup-box">
+
+<h2>Course Activated</h2>
+
+<p>
+
+This course is already active on your account.
+
+</p>
+
+<button onclick="openCourse()">
+
+GO TO COURSE
+
+</button>
+
+</div>
+
+</div>
+
+<!-- LOADING -->
+
+<div class="popup" id="loadingPopup">
+
+<div class="popup-box">
+
+<h2>Please Wait...</h2>
+
+<p>
+
+Processing...
+
+</p>
+
+</div>
+
+</div>
+
+<!-- USER INFO -->
+
+<div id="studentBar" style="display:none;padding:15px;text-align:center;">
+
+Welcome,
+
+<b id="studentName"></b>
+
+<button onclick="logoutStudent()">
+
+Logout
+
+</button>
+
+</div>
+
+<!-- HIDDEN VALUES -->
+
+<input
+type="hidden"
+id="currentCourseId"
+value="">
+
+<input
+type="hidden"
+id="studentId"
+value="">
+
+<input
+type="hidden"
+id="purchaseStatus"
+value="">
+
+<script>
+
+const API_URL="PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL_HERE";
+
+</script>
+
 </body>
+
 </html>
