@@ -1022,27 +1022,6 @@ button:hover{
 }
 
 
-/* Dark theme support */
-
-body.dark .popup-box {
-
-    background: black;
-
-    width: 90%;
-    max-width: 400px;
-
-    padding: 25px;
-
-    border-radius: 15px;
-
-    text-align: center;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-
-    animation: popupOpen 0.25s ease;
-
-}
-
 
 /* Inputs */
 
