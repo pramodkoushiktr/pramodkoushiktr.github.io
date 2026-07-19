@@ -964,3 +964,42 @@ button:hover{
         font-size:1.8rem;
     }
 }
+
+
+
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.modal-content{
+    background:white;
+    width:350px;
+    padding:25px;
+    border-radius:12px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.modal-content input{
+    padding:12px;
+    font-size:16px;
+}
+
+.modal-content button{
+    padding:12px;
+    cursor:pointer;
+}
+
+.close{
+    align-self:flex-end;
+    cursor:pointer;
+    font-size:25px;
+}
