@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Store | Pramod Koushik T R</title>
+
+<link rel="icon" type="image/png" href="Polish_20250812_192925345.png">
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<script src="script.js"></script>
+</head>
+<div id="authModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeAuthModal()">&times;</span>
+
+        <h2>Continue</h2>
+
+        <input type="email" placeholder="Email">
+
+        <input type="password" placeholder="Password">
+
+        <button onclick="showSubscription()">Login</button>
+
+        <p>Don't have an account?</p>
+
+        <button>Create Account</button>
+
+    </div>
+
+</div>
+<div id="subscriptionModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeSubscription()">&times;</span>
+
+        <h2>Choose Subscription</h2>
+
+        <button>Monthly - ₹499</button>
+
+        <button>Quarterly - ₹1199</button>
+
+        <button>Yearly - ₹3999</button>
+
+    </div>
+
+</div>
+  
+<body>
+
+<header>
+
+  <div class="navbar">
+
+    <div class="logo">
+      <img src="Polish_20260410_173106545.png" alt="Logo">
+    </div>
+
+    <nav>
+      <a href="buy_books.html">BUY BOOKS</a>
+      <a href="buy_courses.html" class="active">BUY COURSES</a>
+    </nav>
+
+    <div class="theme-switch" onclick="toggleTheme()">
+      <div class="switch-track">
+        <div class="switch-thumb" id="themeIcon">☀︎</div>
+      </div>
+    </div>
+
+  </div>
+
+</header>
+
+<!-- ================= STORE PRODUCTS ================= -->
+
+<div class="product-container">
+
+  <div class="course-card">
+    <div class="playlist-scroll">
+      <a href="https://youtube.com/playlist?list=PLS0t3MqQxvfAMUpDyoI4BHRIrNhtFAXeV&si=8JVUCXXealxTzvoW"><img src="2_ytplaylist.png" alt="Logo"></a>
+      <a href="https://youtube.com/playlist?list=PLS0t3MqQxvfB4Td507i3wPaA8bb5PZN4-&si=Kco8eJczq-j8TwfS"><img src="1_ytplaylist.png" alt="Logo"></a>
+
+    </div>
+    <div class="course-info">
+        <div class="course-text">
+            <h3>Full Concepts | JEE Mathematics | eng/san/kan</h3>
+            <p>
+                A collection of JEE Mathematics concept videos where every chapter is explained with precision and efficiency in just 10–25 minutes. Built for aspirants who value deep understanding, not endless hours of study.
+            </p>
+        </div>
+        <div class="course-price">
+          <s>₹7250.00</s> ₹0.00
+        </div>
+    </div>
+  </div>
+  
+  <div class="course-card">
+    <div class="course-info">
+        <div class="course-text">
+            <h3>Problem Solving | JEE Mathematics | eng/san/kan</h3>
+            <p>
+              COMING SOON...
+            </p>
+        </div>
+        <div class="course-price">
+          <s>₹3050.00</s> ₹0.00
+        </div>
+    </div>
+  </div>
+    
+</div>
+
+</body>
+</html>
