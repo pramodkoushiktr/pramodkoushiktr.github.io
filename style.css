@@ -713,7 +713,7 @@ button:hover{
     flex-direction: column;
     gap: 12px;
 
-    text-align: right;
+    text-align: center;
 }
 
 .course-price a{
