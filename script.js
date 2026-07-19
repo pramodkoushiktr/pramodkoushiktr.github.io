@@ -96,7 +96,7 @@ function displayBooks() {
 // GOOGLE APPS SCRIPT URL
 //==================================================
 
-const API_URL = "PASTE_YOUR_WEBAPP_URL_HERE";
+const API_URL = "https://script.google.com/macros/s/AKfycbyDVlmBrr7n-3GQXvhJD1-nrE6YywmsWtnGmFtzQmuU6jf0CGcNWUDJ2DEWvSC0wbSp/exec";
 
 
 //==================================================
