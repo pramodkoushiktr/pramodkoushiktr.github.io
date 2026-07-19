@@ -1004,7 +1004,8 @@ button:hover{
 
 .popup-box {
 
-    background: black;
+    background: white;
+    color: black;
 
     width: 90%;
     max-width: 400px;
