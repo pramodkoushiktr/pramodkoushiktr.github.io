@@ -968,3 +968,153 @@ button:hover{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==============================
+   POPUP SYSTEM
+============================== */
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Popup box */
+
+.popup-box {
+
+    background: white;
+
+    width: 90%;
+    max-width: 400px;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+    animation: popupOpen 0.25s ease;
+
+}
+
+
+/* Dark theme support */
+
+body.dark .popup-box {
+
+    background:#222;
+
+    color:white;
+
+}
+
+
+/* Inputs */
+
+.popup-box input {
+
+    width:90%;
+
+    padding:12px;
+
+    margin:8px;
+
+    border-radius:8px;
+
+    border:1px solid #ccc;
+
+    font-size:16px;
+
+}
+
+
+/* Buttons */
+
+.popup-box button {
+
+    width:90%;
+
+    padding:12px;
+
+    margin-top:10px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+/* Close button */
+
+.close {
+
+    float:right;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* Animation */
+
+@keyframes popupOpen {
+
+    from {
+
+        transform:scale(0.8);
+
+        opacity:0;
+
+    }
+
+    to {
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
