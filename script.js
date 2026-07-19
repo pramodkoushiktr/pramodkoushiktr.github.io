@@ -88,3 +88,25 @@ function displayBooks() {
     });
 
 }
+
+
+
+
+function openAuthModal() {
+    document.getElementById("authModal").style.display = "flex";
+}
+
+function closeAuthModal() {
+    document.getElementById("authModal").style.display = "none";
+}
+
+function showSubscription() {
+
+    closeAuthModal();
+
+    document.getElementById("subscriptionModal").style.display = "flex";
+}
+
+function closeSubscription() {
+    document.getElementById("subscriptionModal").style.display = "none";
+}
