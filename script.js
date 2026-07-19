@@ -92,29 +92,29 @@ function displayBooks() {
 
 
 
-// =========================
+//==================================================
 // GOOGLE APPS SCRIPT URL
-// =========================
+//==================================================
 
 const API_URL = "PASTE_YOUR_WEBAPP_URL_HERE";
 
 
-// =========================
-// SESSION
-// =========================
+//==================================================
+// VARIABLES
+//==================================================
 
-let currentCourse = "";
-let currentCourseName = "";
-let currentCourseLink = "";
+let selectedCourse = "";
+let selectedCourseName = "";
+let selectedCourseLink = "";
 
 
-// =========================
-// BUY NOW
-// =========================
+//==================================================
+// BUY COURSE
+//==================================================
 
 function buyCourse(courseId){
 
-    currentCourse = courseId;
+    selectedCourse = courseId;
 
     document.getElementById("currentCourseId").value = courseId;
 
@@ -132,9 +132,9 @@ function buyCourse(courseId){
 
 
 
-// =========================
+//==================================================
 // POPUPS
-// =========================
+//==================================================
 
 function openPopup(id){
 
@@ -166,9 +166,59 @@ function openSignup(){
 
 
 
-// =========================
+//==================================================
+// LOADING
+//==================================================
+
+function showLoading(){
+
+    openPopup("loadingPopup");
+
+}
+
+function hideLoading(){
+
+    closePopup("loadingPopup");
+
+}
+
+
+
+//==================================================
+// PAGE LOAD
+//==================================================
+
+window.onload=function(){
+
+    if(sessionStorage.getItem("studentId")){
+
+        document.getElementById("studentBar").style.display="block";
+
+        document.getElementById("studentName").innerHTML=sessionStorage.getItem("studentName");
+
+    }
+
+}
+
+
+
+//==================================================
+// LOGOUT
+//==================================================
+
+function logoutStudent(){
+
+    sessionStorage.clear();
+
+    location.reload();
+
+}
+
+
+
+//==================================================
 // SIGNUP
-// =========================
+//==================================================
 
 async function signupStudent(){
 
@@ -178,17 +228,33 @@ async function signupStudent(){
 
     let password=document.getElementById("signupPassword").value.trim();
 
-    if(name=="" || email=="" || password==""){
+    if(name==""){
 
-        alert("Fill all fields.");
+        alert("Enter your name.");
 
         return;
 
     }
 
-    openPopup("loadingPopup");
+    if(email==""){
 
-    const response=await fetch(API_URL,{
+        alert("Enter email.");
+
+        return;
+
+    }
+
+    if(password==""){
+
+        alert("Enter password.");
+
+        return;
+
+    }
+
+    showLoading();
+
+    let response=await fetch(API_URL,{
 
         method:"POST",
 
@@ -206,11 +272,11 @@ async function signupStudent(){
 
     });
 
-    const data=await response.json();
+    let result=await response.json();
 
-    closePopup("loadingPopup");
+    hideLoading();
 
-    if(data.status=="exists"){
+    if(result.status=="exists"){
 
         alert("Email already registered.");
 
@@ -218,15 +284,15 @@ async function signupStudent(){
 
     }
 
-    sessionStorage.setItem("studentId",data.studentId);
+    sessionStorage.setItem("studentId",result.studentId);
 
     sessionStorage.setItem("studentName",name);
 
     sessionStorage.setItem("studentEmail",email);
 
-    document.getElementById("studentName").innerHTML=name;
-
     document.getElementById("studentBar").style.display="block";
+
+    document.getElementById("studentName").innerHTML=name;
 
     closePopup("signupPopup");
 
@@ -236,9 +302,9 @@ async function signupStudent(){
 
 
 
-// =========================
+//==================================================
 // LOGIN
-// =========================
+//==================================================
 
 async function loginStudent(){
 
@@ -246,17 +312,25 @@ async function loginStudent(){
 
     let password=document.getElementById("loginPassword").value.trim();
 
-    if(email=="" || password==""){
+    if(email==""){
 
-        alert("Enter email and password.");
+        alert("Enter email.");
 
         return;
 
     }
 
-    openPopup("loadingPopup");
+    if(password==""){
 
-    const response=await fetch(API_URL,{
+        alert("Enter password.");
+
+        return;
+
+    }
+
+    showLoading();
+
+    let response=await fetch(API_URL,{
 
         method:"POST",
 
@@ -272,11 +346,11 @@ async function loginStudent(){
 
     });
 
-    const data=await response.json();
+    let result=await response.json();
 
-    closePopup("loadingPopup");
+    hideLoading();
 
-    if(data.status!="success"){
+    if(result.status!="success"){
 
         alert("Wrong email or password.");
 
@@ -284,15 +358,15 @@ async function loginStudent(){
 
     }
 
-    sessionStorage.setItem("studentId",data.studentId);
+    sessionStorage.setItem("studentId",result.studentId);
 
-    sessionStorage.setItem("studentName",data.name);
+    sessionStorage.setItem("studentName",result.name);
 
     sessionStorage.setItem("studentEmail",email);
 
-    document.getElementById("studentName").innerHTML=data.name;
-
     document.getElementById("studentBar").style.display="block";
+
+    document.getElementById("studentName").innerHTML=result.name;
 
     closePopup("loginPopup");
 
@@ -301,33 +375,228 @@ async function loginStudent(){
 }
 
 
+//==================================================
+// CHECK COURSE PURCHASE STATUS
+//==================================================
 
-// =========================
-// LOGOUT
-// =========================
+async function checkPurchase(){
 
-function logoutStudent(){
+    let studentId=sessionStorage.getItem("studentId");
 
-    sessionStorage.clear();
+    if(!studentId){
 
-    location.reload();
+        openLogin();
+
+        return;
+
+    }
+
+
+    showLoading();
+
+
+    let response=await fetch(API_URL,{
+
+        method:"POST",
+
+        body:JSON.stringify({
+
+            action:"checkPurchase",
+
+            studentId:studentId,
+
+            courseId:selectedCourse
+
+        })
+
+    });
+
+
+    let result=await response.json();
+
+
+    hideLoading();
+
+
+
+    // No purchase found
+
+    if(result.status=="notPurchased"){
+
+        openPopup("paymentPopup");
+
+        return;
+
+    }
+
+
+
+    // Payment submitted but not approved
+
+    if(result.status=="Pending"){
+
+        openPopup("pendingPopup");
+
+        return;
+
+    }
+
+
+
+    // Course activated
+
+    if(result.status=="Approved"){
+
+        openPopup("approvedPopup");
+
+        return;
+
+    }
+
 
 }
 
 
 
-// =========================
-// PAGE LOAD
-// =========================
+//==================================================
+// SUBMIT UPI TRANSACTION
+//==================================================
 
-window.onload=function(){
+async function submitTransaction(){
 
-    if(sessionStorage.getItem("studentId")!=null){
 
-        document.getElementById("studentBar").style.display="block";
+    let transactionId=document
+    .getElementById("transactionId")
+    .value
+    .trim();
 
-        document.getElementById("studentName").innerHTML=sessionStorage.getItem("studentName");
+
+
+    if(transactionId==""){
+
+        alert("Enter UPI Transaction ID.");
+
+        return;
 
     }
+
+
+
+    let studentId=sessionStorage.getItem("studentId");
+
+
+
+    if(!studentId){
+
+        alert("Please login again.");
+
+        return;
+
+    }
+
+
+
+    showLoading();
+
+
+
+    let response=await fetch(API_URL,{
+
+        method:"POST",
+
+        body:JSON.stringify({
+
+            action:"submitPayment",
+
+            studentId:studentId,
+
+            courseId:selectedCourse,
+
+            transactionId:transactionId
+
+        })
+
+    });
+
+
+
+    let result=await response.json();
+
+
+
+    hideLoading();
+
+
+
+    if(result.status=="success"){
+
+
+        closePopup("paymentPopup");
+
+
+        openPopup("successPopup");
+
+
+        return;
+
+
+    }
+
+
+
+    alert("Something went wrong. Try again.");
+
+
+
+}
+
+
+
+//==================================================
+// OPEN COURSE
+//==================================================
+
+function openCourse(){
+
+
+    closePopup("approvedPopup");
+
+
+    if(selectedCourse=="COURSE001"){
+
+
+        window.location.href="course.html?id=COURSE001";
+
+
+    }
+
+
+}
+
+
+
+//==================================================
+// CLOSE POPUP WHEN CLICKING OUTSIDE
+//==================================================
+
+window.onclick=function(event){
+
+
+    let popups=document.getElementsByClassName("popup");
+
+
+    for(let i=0;i<popups.length;i++){
+
+
+        if(event.target==popups[i]){
+
+
+            popups[i].style.display="none";
+
+
+        }
+
+    }
+
 
 }
