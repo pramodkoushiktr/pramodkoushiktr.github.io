@@ -423,11 +423,13 @@ async function checkPurchase(){
 
     if(result.status=="notPurchased"){
 
-        openPopup("paymentPopup");
+    alert("Payment popup should open now");
 
-        return;
+    openPopup("paymentPopup");
 
-    }
+    return;
+
+}
 
 
 
