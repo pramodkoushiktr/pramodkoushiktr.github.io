@@ -92,21 +92,196 @@ function displayBooks() {
 
 
 
-function openAuthModal() {
-    document.getElementById("authModal").style.display = "flex";
+let loggedUser = null;
+
+
+
+function buyCourse(){
+
+if(localStorage.getItem("user")){
+
+showPurchase();
+
 }
 
-function closeAuthModal() {
-    document.getElementById("authModal").style.display = "none";
+else{
+
+openAuthModal();
+
 }
 
-function showSubscription() {
-
-    closeAuthModal();
-
-    document.getElementById("subscriptionModal").style.display = "flex";
 }
 
-function closeSubscription() {
-    document.getElementById("subscriptionModal").style.display = "none";
+
+
+
+
+function openAuthModal(){
+
+document.getElementById("authModal")
+.style.display="flex";
+
+}
+
+
+
+
+function closeAuthModal(){
+
+document.getElementById("authModal")
+.style.display="none";
+
+}
+
+
+
+
+function login(){
+
+let email =
+document.getElementById("email").value;
+
+
+let password =
+document.getElementById("password").value;
+
+
+
+if(email==="" || password===""){
+
+alert("Enter email and password");
+
+return;
+
+}
+
+
+
+localStorage.setItem(
+"user",
+email
+);
+
+
+
+closeAuthModal();
+
+
+showPurchase();
+
+
+}
+
+
+
+
+
+
+
+function register(){
+
+let email =
+document.getElementById("email").value;
+
+
+let password =
+document.getElementById("password").value;
+
+
+
+if(email==="" || password===""){
+
+alert("Enter details");
+
+return;
+
+}
+
+
+
+localStorage.setItem(
+"user",
+email
+);
+
+
+
+alert("Account created");
+
+
+closeAuthModal();
+
+
+showPurchase();
+
+
+}
+
+
+
+
+
+
+
+
+function showPurchase(){
+
+document.getElementById("purchaseModal")
+.style.display="flex";
+
+}
+
+
+
+
+
+
+function closePurchaseModal(){
+
+document.getElementById("purchaseModal")
+.style.display="none";
+
+}
+
+
+
+
+
+
+
+function payment(plan){
+
+
+if(plan=="monthly"){
+
+alert("Opening Razorpay Monthly Subscription");
+
+}
+
+
+if(plan=="quarterly"){
+
+alert("Opening Razorpay Quarterly Subscription");
+
+}
+
+
+if(plan=="yearly"){
+
+alert("Opening Razorpay Yearly Subscription");
+
+}
+
+
+if(plan=="lifetime"){
+
+alert("Opening Razorpay One Time Payment");
+
+}
+
+
+
+// Razorpay code will come here later
+
+
 }
