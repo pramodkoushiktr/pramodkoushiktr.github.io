@@ -716,18 +716,8 @@ button:hover{
     text-align: center;
 }
 
-.course-price a{
-    text-decoration: none;
-    color: var(--text);
-
-    font-size: 1.3rem;
-    font-weight: 700;
-
-    transition: opacity .3s ease;
-}
-
-.course-price a:hover{
-    opacity: 0.7;
+.course-price:hover{
+    transform:scale(1.02);
 }
 
 /* =========================
