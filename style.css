@@ -713,11 +713,21 @@ button:hover{
     flex-direction: column;
     gap: 12px;
 
-    text-align: center;
+    text-align: right;
 }
 
-.course-price:hover{
-    transform:scale(1.02);
+.course-price a{
+    text-decoration: none;
+    color: var(--text);
+
+    font-size: 1.3rem;
+    font-weight: 700;
+
+    transition: opacity .3s ease;
+}
+
+.course-price a:hover{
+    opacity: 0.7;
 }
 
 /* =========================
@@ -953,149 +963,4 @@ button:hover{
     .blueprint-header h2{
         font-size:1.8rem;
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ==============================
-   POPUP SYSTEM
-============================== */
-
-.popup {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    justify-content: center;
-    align-items: center;
-}
-
-
-/* Popup box */
-
-.popup-box {
-
-    background: white;
-    color: black;
-
-    width: 90%;
-    max-width: 400px;
-
-    padding: 25px;
-
-    border-radius: 15px;
-
-    text-align: center;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-
-    animation: popupOpen 0.25s ease;
-
-}
-
-
-
-/* Inputs */
-
-.popup-box input {
-
-    width:90%;
-
-    padding:12px;
-
-    margin:8px;
-
-    border-radius:8px;
-
-    border:1px solid #ccc;
-
-    font-size:16px;
-
-}
-
-
-/* Buttons */
-
-.popup-box button {
-
-    width:90%;
-
-    padding:12px;
-
-    margin-top:10px;
-
-    border:none;
-
-    border-radius:10px;
-
-    cursor:pointer;
-
-    font-size:16px;
-
-}
-
-
-/* Close button */
-
-.close {
-
-    float:right;
-
-    font-size:28px;
-
-    cursor:pointer;
-
-}
-
-
-
-/* Animation */
-
-@keyframes popupOpen {
-
-    from {
-
-        transform:scale(0.8);
-
-        opacity:0;
-
-    }
-
-    to {
-
-        transform:scale(1);
-
-        opacity:1;
-
-    }
-
 }
